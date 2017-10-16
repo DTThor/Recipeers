@@ -1,0 +1,27 @@
+{
+  "name": "recipeers",
+  "version": "1.0.0",
+  "description": "Q2 project",
+  "main": "server.js",
+  "scripts": {
+    "test": "NODE_ENV = test mocha",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-as-promised": "^1.1.0",
+    "body-parser": "^1.18.2",
+    "chai": "^4.1.2",
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-beta.3",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "express-method-override": "0.0.3",
+    "knex": "^0.13.0",
+    "mocha": "^4.0.1",
+    "morgan": "^1.9.0",
+    "pg": "^7.3.0",
+    "supertest": "^3.0.0"
+  }
+}
