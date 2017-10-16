@@ -6,36 +6,43 @@ const bcrypt = require('bcrypt-as-promised');
 
 //GET '/' - return the feed of recipes
 //**if logged in return recipes of followed users
-router.get('/', (res, req, next) => {
+router.get('/', (req, res, next) => {
   res.send('all the recipes');
-}).catch( (err) => {
-  next(err);
-});
+})
+//.catch((err) => {
+//   next(err);
+// });
 
 //GET '/recipes/new'
-router.get('/recipes/new', (res, req, next) => {
+router.get('/new', (req, res, next) => {
   res.send('new recipe page');
-}).catch( (err) => {
-  next(err);
-});
+})
+//.catch( (err) => {
+//   next(err);
+// });
 
 //POST '/recipes' (can do either recipe format!)
-router.post('/recipes', (res, req, next) => {
+router.post('/', (req, res, next) => {
   res.send('send new recipe in');
-}).catch( (err) => {
-  next(err);
-});
+})
+//.catch( (err) => {
+//   next(err);
+// });
 
 //GET '/share'
-router.get('/recipes/share', (res, req, next) => {
+router.get('/share', (req, res, next) => {
   res.send('sharing an external recipe link');
-}).catch( (err) => {
-  next(err);
-});
+})
+//.catch( (err) => {
+//   next(err);
+// });
 
 //GET /recipe/recipename
-router.get('/recipes/:recipename', (res, req, next) => {
+router.get('/:recipename', (req, res, next) => {
   res.send('see a particular recipe');
-}).catch( (err) => {
-  next(err);
-});
+})
+// .catch( (err) => {
+//   next(err);
+// });
+
+module.exports = router;

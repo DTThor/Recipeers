@@ -16,6 +16,13 @@ app.get('/', (req, res) => {
   res.send('booyah');
 });
 
+//bring in the routes files
+const recipes = require('./routes/recipes');
+const users = require('./routes/users')
+
+app.use('/recipes', recipes);
+app.use('/users', users)
+
 //port listening
 app.listen(PORT, ()=>{
   console.log(`Listening on port ${PORT}`);
