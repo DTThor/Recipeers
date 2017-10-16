@@ -6,11 +6,8 @@ const bcrypt = require('bcrypt-as-promised');
 
 //GET '/users/signin' - a page for logging in or registering
 router.get('/signin', (req, res, next) => {
-  res.send('sign in');
+  res.render('users/signin');
 })
-// .catch( (err) => {
-//   next(err);
-// })
 
 //POST '/users/login' - log a user into app
 router.post('/login', (req, res, next) => {
@@ -22,11 +19,19 @@ router.post('/login', (req, res, next) => {
 
 //POST '/users/register' - register a new user, redirect to user profile
 router.post('/register', (req, res, next) => {
-  res.send('user registration post');
-})
-// .catch( (err) => {
-//   next(err);
-// })
+  bcrypt.hash(req.body.password, 12)
+ .then(hash => {
+   knex('users')
+   .returning('username')
+   .insert({username: req.body.username, hashedpass: hash})
+   .then(user => {
+     let profileURL = '/users/' + user.username;
+     res.redirect(profileURL)
+    })
+ }).catch( (err) => {
+   next(err);
+ })
+ })
 
 //GET '/users/<username>' - get the profile page for a user, edit access is avail
 //to the user
