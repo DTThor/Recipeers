@@ -30,12 +30,11 @@ app.get('/', (req, res) => {
 // set up morgan
 app.use(morgan('dev'));
 
-//bring in the routes files
+//bring in other routes
 const recipes = require('./routes/recipes');
-const users = require('./routes/users')
-
+const users = require('./routes/users');
 app.use('/recipes', recipes);
-app.use('/users', users)
+app.use('/users', users);
 
 //port listening
 app.listen(PORT, ()=>{
