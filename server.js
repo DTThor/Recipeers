@@ -7,6 +7,9 @@ const methodOverride = require('express-method-override');
 const bodyParser = require('body-parser');
 const cookieSession = require('cookie-session');
 const cookieParser = require('cookie-parser');
+const cloudinary = require('cloudinary-core');
+const cl = new cloudinary.Cloudinary({recipeers: "demo", secure: true});
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
