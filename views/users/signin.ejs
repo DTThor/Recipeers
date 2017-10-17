@@ -1,16 +1,22 @@
 
 
-    <%- include('../partials/header') %>
+<%- include('../partials/header') %>
 
-    <main>
-      <form method="POST">
-      <label for="username">Username:</label>
-      <input type="text" name="username">
-      <label for="password">Password:</label>
-      <input type="text" name="password">
-      <button type="submit" formaction="/users/login">Log In</button>
-      <button type="submit" formaction="/users/register">Register</button>
-    </form>
-    </main>
+  <div class = 'container'>
+    <div class= 'row'>
+      <div class=".mediumScreen">
+        <main class = 'card'>
+          <form method="POST">
+          <label for="username">Username:</label>
+          <input type="text" name="username">
+          <label for="password">Password:</label>
+          <input type="password" name="password">
+          <button type="submit" formaction="/users/login">Log In</button>
+          <button type="submit" formaction="/users/register">Register</button>
+        </form>
+        </main>
+      </div>
+    </div>
+  </div>
 
-    <%- include('../partials/footer') %>
+  <%- include('../partials/footer') %>
