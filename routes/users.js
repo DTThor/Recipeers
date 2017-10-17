@@ -3,6 +3,8 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
 const bcrypt = require('bcrypt-as-promised');
+// const session = require('cookie-session');
+// const cookieParser = require('cookie-parser');
 
 //GET '/users/signin' - a page for logging in or registering
 router.get('/signin', (req, res, next) => {
@@ -11,11 +13,20 @@ router.get('/signin', (req, res, next) => {
 
 //POST '/users/login' - log a user into app
 router.post('/login', (req, res, next) => {
-  res.send('log in post');
+  knex('users')
+  .where({username: req.body.username})
+  .first()
+  .then(user => bcrypt.compare(req.body.password,user.hashedpass)
+    .then(valid => {
+      if(valid) {
+        req.session.user = user;
+        let profileURL = '/users/' + req.body.username;
+        res.redirect(profileURL)
+      }
+  }).catch( (invalid) => {
+    res.redirect('/signin');
+  }))
 })
-// .catch( (err) => {
-//   next(err);
-// })
 
 //POST '/users/register' - register a new user, redirect to user profile
 router.post('/register', (req, res, next) => {
@@ -25,12 +36,13 @@ router.post('/register', (req, res, next) => {
    .returning('username')
    .insert({username: req.body.username, hashedpass: hash})
    .then(user => {
-     let profileURL = '/users/' + user.username;
+     req.session.user = user[0];
+     let profileURL = '/users/' + req.body.username;
      res.redirect(profileURL)
     })
  }).catch( (err) => {
    next(err);
- })
+  })
  })
 
 //GET '/users/<username>' - get the profile page for a user, edit access is avail
