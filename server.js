@@ -8,7 +8,6 @@ const methodOverride = require('express-method-override');
 const bodyParser = require('body-parser');
 const session = require('cookie-session');
 const cookieParser = require('cookie-parser');
-<<<<<<< HEAD
 const cloudinary = require('cloudinary-core');
 const cl = new cloudinary.Cloudinary({recipeers: "demo", secure: true});
 
@@ -16,8 +15,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 
-=======
->>>>>>> 369f284e8e1b61221ff06e22d8c6ff06e5427c30
 //set up ejs
 app.set('view engine', 'ejs');
 
