@@ -12,7 +12,10 @@
     <main>
       <h1><%= user.username %></h1>
       <a href="#" id="upload_widget_opener"><i class="material-icons">add_to_photos</i>Set Profile Picture</a>
+      <%=user.profilePic%>
       <script type="text/javascript">
+      let profPic = '<%=user.profilePic%>';
+      $('h1').append( $('<img src='+profPic.slice(17, profPic.length - 11)+'>') )
       document.getElementById("upload_widget_opener").addEventListener("click", function() {
         cloudinary.openUploadWidget({ cloud_name: 'dcc5vb7ot', upload_preset: 'ft2wpaew'},
         function(error, result) { console.log(error, result) });
