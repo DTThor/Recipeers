@@ -6,7 +6,7 @@ module.exports = {
     client: 'pg',
     connection: {
       debug: true,
-      database: 'postgres://localhost:5432/recipeer_dev'
+      database: 'recipeer_dev'
     }
   },
 
@@ -14,7 +14,7 @@ module.exports = {
     client: 'pg',
     connection: {
       debug: true,
-      database: 'postgres://localhost:5432/recipeer_test'
+      database: 'recipeer_test'
     }
   },
 
