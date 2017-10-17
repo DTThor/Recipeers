@@ -8,7 +8,8 @@ body {
 }
 
 main {
-  margin: 30px;
+  margin-top: 30px;
+  padding: 20px;
 }
 
 footer {
@@ -16,4 +17,11 @@ footer {
   left: 0;
   bottom: 0;
   width: 100%;
+}
+
+.mediumScreen {
+   width: 50%;
+   float: none;
+   display: block;
+   margin: auto;
 }
