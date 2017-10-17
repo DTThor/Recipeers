@@ -11,11 +11,17 @@ router.get('/signin', (req, res, next) => {
 
 //POST '/users/login' - log a user into app
 router.post('/login', (req, res, next) => {
-  res.send('log in post');
+  knex('users')
+  .where({username: req.body.username})
+  .first()
+  .then(user => bcrypt.compare(req.body.password,user.hashedpass))
+    .then(user => {
+      let profileURL = '/users/' + req.body.username;
+      res.redirect(profileURL)
+  }).catch( (err) => {
+    next(err);
+  })
 })
-// .catch( (err) => {
-//   next(err);
-// })
 
 //POST '/users/register' - register a new user, redirect to user profile
 router.post('/register', (req, res, next) => {
@@ -25,12 +31,12 @@ router.post('/register', (req, res, next) => {
    .returning('username')
    .insert({username: req.body.username, hashedpass: hash})
    .then(user => {
-     let profileURL = '/users/' + user.username;
+     let profileURL = '/users/' + req.body.username;
      res.redirect(profileURL)
     })
  }).catch( (err) => {
    next(err);
- })
+  })
  })
 
 //GET '/users/<username>' - get the profile page for a user, edit access is avail
