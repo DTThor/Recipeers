@@ -1,0 +1,32 @@
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin: 0 0 35px;
+}
+
+main {
+  margin-top: 30px;
+  padding: 20px;
+}
+
+footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.mediumScreen {
+   width: 50%;
+   float: none;
+   display: block;
+   margin: auto;
+}
+
+.side-nav {
+  height: auto;
+  padding: 15px;
+}
