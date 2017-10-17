@@ -1,0 +1,19 @@
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin: 0 0 35px;
+}
+
+main {
+  margin: 30px;
+}
+
+footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}

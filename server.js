@@ -1,12 +1,14 @@
 //bring in dependencies and set up environmental variables
+require('dotenv').load();
 const PORT = process.env.PORT || 8000;
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const methodOverride = require('express-method-override');
 const bodyParser = require('body-parser');
-const cookieSession = require('cookie-session');
+const session = require('cookie-session');
 const cookieParser = require('cookie-parser');
+<<<<<<< HEAD
 const cloudinary = require('cloudinary-core');
 const cl = new cloudinary.Cloudinary({recipeers: "demo", secure: true});
 
@@ -14,24 +16,58 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 
+=======
+>>>>>>> 369f284e8e1b61221ff06e22d8c6ff06e5427c30
 //set up ejs
 app.set('view engine', 'ejs');
 
-//set up morgan
-app.use(morgan('dev'));
+//set up static files
+app.use(express.static('public'));
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(methodOverride('_method'));
 
 //set up cookies
+const secret1 = process.env.SECRET_KEY1;
+const secret2 = process.env.SECRET_KEY2;
 app.use(cookieParser());
-app.set('trust proxy', 1) // trust first proxy
-app.use(cookieSession({
+app.use(session({
   name: 'session',
-  keys: ['banana', 'kiwi', 'pineapple']
+  keys: [secret1,secret2],
+  maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }));
+
+// middleware
+const isLoggedIn = (req,res,next) => {
+  let user = req.session.user;
+  if (user) {
+    res.locals.currentUser = user; // make currentUser available to all of our views
+    next();
+  } else {
+    res.locals.currentUser = null
+    next();
+  }
+}
+
+// logging out
+app.get('/logout', (req, res) => {
+  req.session = null;
+  res.redirect('/')
+})
+
+// check if user is logged in for every route
+app.use(isLoggedIn)
+
+
+//set up morgan
+app.use(morgan('dev'));
 
 //home page route
 app.get('/', (req, res) => {
   res.send('booyah');
 });
+
 
 //bring in other routes
 const recipes = require('./routes/recipes');
