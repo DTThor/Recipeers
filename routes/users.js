@@ -15,9 +15,14 @@ router.post('/login', (req, res, next) => {
   .where({username: req.body.username})
   .first()
   .then(user => bcrypt.compare(req.body.password,user.hashedpass))
-    .then(user => {
-      let profileURL = '/users/' + req.body.username;
-      res.redirect(profileURL)
+    .then(valid => {
+      if(valid) {
+        req.session.user = user;
+        let profileURL = '/users/' + req.body.username;
+        res.redirect(profileURL)
+      } else {
+        res.redirect('users/signin')
+      }
   }).catch( (err) => {
     next(err);
   })
@@ -31,6 +36,7 @@ router.post('/register', (req, res, next) => {
    .returning('username')
    .insert({username: req.body.username, hashedpass: hash})
    .then(user => {
+     req.session.user = user[0];
      let profileURL = '/users/' + req.body.username;
      res.redirect(profileURL)
     })

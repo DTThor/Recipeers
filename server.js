@@ -19,6 +19,27 @@ app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }));
 
+// middleware
+const isLoggedIn = (req,res,next) => {
+  let user = req.session.user;
+  if (user) {
+    res.locals.currentUser = user; // make currentUser available to all of our views
+    next();
+  } else {
+    res.locals.currentUser = null
+    next();
+  }
+}
+
+// check if user is logged in for every route
+app.use(isLoggedIn)
+
+// logging out
+app.get('/logout', (req, res) => {
+  req.session = null;
+  res.redirect('/')
+})
+
 //set up ejs
 app.set('view engine', 'ejs');
 
