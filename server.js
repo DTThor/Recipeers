@@ -4,12 +4,17 @@ const express = require('express');
 const app = express();
 const methodOverride = require('express-method-override');
 const bodyParser = require('body-parser');
+//set up ejs
+app.set('view engine', 'ejs');
+
+//set up static files
+app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 
-//set up ejs
-app.set('view engine', 'ejs');
+
+
 
 //home page route
 app.get('/', (req, res) => {
