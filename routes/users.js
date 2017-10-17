@@ -48,11 +48,15 @@ router.post('/register', (req, res, next) => {
 //GET '/users/<username>' - get the profile page for a user, edit access is avail
 //to the user
 router.get('/:username', (req, res, next) => {
-  res.send('view user page');
+  knex('users')
+  .where({username: req.params.username})
+  .first()
+  .then(user => {
+    res.render('users/profile', {user})
+  }).catch( (err) => {
+    next(err);
+  })
 })
-// .catch( (err) => {
-//   next(err);
-// })
 
 //GET '/users/<username>/edit' - get the page to edit user profile
 router.get('/:username/edit', (req, res, next) => {
