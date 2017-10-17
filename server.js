@@ -11,6 +11,9 @@ const cookieParser = require('cookie-parser');
 //set up ejs
 app.set('view engine', 'ejs');
 
+//set up static files
+app.use(express.static('public'));
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
