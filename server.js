@@ -55,7 +55,7 @@ app.use(morgan('dev'));
 
 //home page route
 app.get('/', (req, res) => {
-  res.send('booyah');
+  res.render('index.ejs');
 });
 
 

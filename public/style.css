@@ -25,3 +25,8 @@ footer {
    display: block;
    margin: auto;
 }
+
+.side-nav {
+  height: auto;
+  padding: 15px;
+}
