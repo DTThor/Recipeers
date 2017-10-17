@@ -11,7 +11,6 @@ cloudinary.config({
   api_key: '451134894389928',
   api_secret: '9R_XPM5LnDgckyaED_zrLMm3mNc'
 })
-//const cl = new cloudinary.Cloudinary({cloud_name: "dcc5vb7ot", secure: true});
 
 //GET '/users/signin' - a page for logging in or registering
 router.get('/signin', (req, res, next) => {
@@ -55,6 +54,7 @@ router.post('/register', (req, res, next) => {
 //GET '/users/<username>' - get the profile page for a user, edit access is avail
 //to the user
 router.get('/:username', (req, res, next) => {
+
   knex('users')
   .where({username: req.params.username})
   .first()
@@ -65,6 +65,8 @@ router.get('/:username', (req, res, next) => {
     next(err);
   })
 })
+
+
 
 //GET '/users/<username>/edit' - get the page to edit user profile
 router.get('/:username/edit', (req, res, next) => {
@@ -103,23 +105,58 @@ router.delete('/:username', (req, res, next) => {
 
 //GET 'users/<username>/recipes'
 router.get('/:username/recipes', (req, res, next) => {
-  res.send('view recipes of user')
-})
+    knex('users')
+    .where({username: req.params.username})
+    .first()
+    .then(user => {
+      knex('users')
+      //.select('recipes.name', 'recipes.upvotes', 'recipes.ingredients')
+      .where({username: req.params.username})
+      .innerJoin('recipes', 'users.id', 'recipes.user_id')
+      .then(recipes => {
+        console.log(recipes)
+        res.render('users/profile', {user})
+      }).catch( (err) => {
+        next(err);
+      })
+    })
+   })
+
+//   res.send('view recipes of user')
+// })
 // .catch( (err) => {
 //   next(err);
 // })
 
 //GET 'users/<username>/favorites'
 router.get('/:username/favorites', (req, res, next) => {
-  res.send('view favorites of user')
-})
+  knex('users')
+  .where({username: req.params.username})
+  .first()
+  .then(user => {
+    console.log(user.id);
+    knex('recipes')
+    .where( 'favorites.user_id', user.id)
+    .innerJoin('favorites', 'recipes.id', 'favorites.favorite_recipe_id')
+    .then(favorites => {
+      console.log(favorites)
+      res.render('users/profile', {user})
+    }).catch( (err) => {
+      next(err);
+    })
+  })
+ })
+//   res.send('view favorites of user')
+// })
+
+
 // .catch( (err) => {
 //   next(err);
 // })
 
 //GET 'users/<username>/following'
 router.get('/:username/following', (req, res, next) => {
-  res.send('view users a user follows')
+  res.render('users/following')
 })
 // .catch( (err) => {
 //   next(err);
@@ -127,7 +164,7 @@ router.get('/:username/following', (req, res, next) => {
 
 //GET 'users/<username>/followers'
 router.get('/:username/followers', (req, res, next) => {
-  res.send('view users following a user')
+  res.render('users/followers')
 })
 // .catch( (err) => {
 //   next(err);
