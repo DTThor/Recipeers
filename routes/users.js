@@ -95,7 +95,7 @@ router.delete('/:username', (req, res, next) => {
 
 //GET 'users/<username>/recipes'
 router.get('/:username/recipes', (req, res, next) => {
-  res.send('view recipes of user')
+  res.render('users/recipes')
 })
 // .catch( (err) => {
 //   next(err);
@@ -103,7 +103,7 @@ router.get('/:username/recipes', (req, res, next) => {
 
 //GET 'users/<username>/favorites'
 router.get('/:username/favorites', (req, res, next) => {
-  res.send('view favorites of user')
+  res.render('users/favorites')
 })
 // .catch( (err) => {
 //   next(err);
@@ -111,7 +111,7 @@ router.get('/:username/favorites', (req, res, next) => {
 
 //GET 'users/<username>/following'
 router.get('/:username/following', (req, res, next) => {
-  res.send('view users a user follows')
+  res.render('users/following')
 })
 // .catch( (err) => {
 //   next(err);
@@ -119,7 +119,7 @@ router.get('/:username/following', (req, res, next) => {
 
 //GET 'users/<username>/followers'
 router.get('/:username/followers', (req, res, next) => {
-  res.send('view users following a user')
+  res.render('users/followers')
 })
 // .catch( (err) => {
 //   next(err);
