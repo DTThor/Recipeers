@@ -48,15 +48,19 @@ router.post('/register', (req, res, next) => {
 //GET '/users/<username>' - get the profile page for a user, edit access is avail
 //to the user
 router.get('/:username', (req, res, next) => {
+
   knex('users')
-  .where({username: req.params.username})
-  .first()
-  .then(user => {
-    res.render('users/profile', {user})
-  }).catch( (err) => {
-    next(err);
-  })
+.where({username: req.params.username})
+.first()
+.then(user => {
+  res.render('users/profile', {user})
+}).catch( (err) => {
+  next(err);
 })
+})
+
+
+
 
 //GET '/users/<username>/edit' - get the page to edit user profile
 router.get('/:username/edit', (req, res, next) => {
@@ -95,16 +99,51 @@ router.delete('/:username', (req, res, next) => {
 
 //GET 'users/<username>/recipes'
 router.get('/:username/recipes', (req, res, next) => {
-  res.send('view recipes of user')
-})
+    knex('users')
+    .where({username: req.params.username})
+    .first()
+    .then(user => {
+      knex('users')
+      //.select('recipes.name', 'recipes.upvotes', 'recipes.ingredients')
+      .where({username: req.params.username})
+      .innerJoin('recipes', 'users.id', 'recipes.user_id')
+      .then(recipes => {
+        console.log(recipes)
+        res.render('users/profile', {user})
+      }).catch( (err) => {
+        next(err);
+      })
+    })
+   })
+
+//   res.send('view recipes of user')
+// })
 // .catch( (err) => {
 //   next(err);
 // })
 
 //GET 'users/<username>/favorites'
 router.get('/:username/favorites', (req, res, next) => {
-  res.send('view favorites of user')
-})
+  knex('users')
+  .where({username: req.params.username})
+  .first()
+  .then(user => {
+    console.log(user.id);
+    knex('recipes')
+    .where( 'favorites.user_id', user.id)
+    .innerJoin('favorites', 'recipes.id', 'favorites.favorite_recipe_id')
+    .then(favorites => {
+      console.log(favorites)
+      res.render('users/profile', {user})
+    }).catch( (err) => {
+      next(err);
+    })
+  })
+ })
+//   res.send('view favorites of user')
+// })
+
+
 // .catch( (err) => {
 //   next(err);
 // })

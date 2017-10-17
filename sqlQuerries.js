@@ -16,14 +16,14 @@
 //NAME, USERNAME, LOCATION
 SELECT name, username, location
 FROM users
-WHERE id = 1;
+WHERE username = ;
 
 //FIND ALL USERS RECIPES AND UPVOTES FROM A USER BASED ON ID
 SELECT recipes.name, recipes.upvotes
 FROM users
 INNER JOIN recipes
 ON recipes.user_id = users.id
-WHERE users.id = 1;
+WHERE users.username = 'amandarulez';
 //returns the names of all Amandas recipes and their upvotes
 
 //FOLLOWING
