@@ -1,4 +1,5 @@
 //bring in dependencies and set up environmental variables
+require('dotenv').load();
 const PORT = process.env.PORT || 8000;
 const express = require('express');
 const app = express();
@@ -12,10 +13,11 @@ app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 
 //set up cookies
+const secret = process.env.SECRET_KEY;
 app.use(cookieParser());
 app.use(cookieSession({
   name: 'session',
-  keys: ['banana', 'kiwi', 'pineapple'],
+  keys: secret,
   maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }));
 
