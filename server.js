@@ -47,13 +47,14 @@ app.get('/logout', (req, res) => {
 app.use(isLoggedIn)
 
 
+//set up morgan
+app.use(morgan('dev'));
+
 //home page route
 app.get('/', (req, res) => {
   res.send('booyah');
 });
 
-// set up morgan
-app.use(morgan('dev'));
 
 //bring in other routes
 const recipes = require('./routes/recipes');
