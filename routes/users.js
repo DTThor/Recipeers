@@ -28,7 +28,7 @@ router.post('/login', (req, res, next) => {
   }))
 })
 
-//POST '/users/register' - register a new user, redirect to user profile
+//POST '/users/register' - register a new user, redirect to edit user profile
 router.post('/register', (req, res, next) => {
   bcrypt.hash(req.body.password, 12)
  .then(hash => {
@@ -37,8 +37,8 @@ router.post('/register', (req, res, next) => {
    .insert({username: req.body.username, hashedpass: hash})
    .then(user => {
      req.session.user = user[0];
-     let profileURL = '/users/' + req.body.username;
-     res.redirect(profileURL)
+     let editURL = '/users/' + req.body.username + '/edit';
+     res.redirect(editURL)
     })
  }).catch( (err) => {
    next(err);
@@ -60,19 +60,30 @@ router.get('/:username', (req, res, next) => {
 
 //GET '/users/<username>/edit' - get the page to edit user profile
 router.get('/:username/edit', (req, res, next) => {
-  res.send('edit user profile');
+  knex('users')
+  .where({username: req.params.username})
+  .first()
+  .then(user => {
+    res.render('users/edit', {user})
+  }).catch( (err) => {
+    next(err);
+  })
 })
-// .catch( (err) => {
-//   next(err);
-// })
 
 //PATCH '/users/<username>' - edit the user profile information
 router.patch('/:username', (req, res, next) => {
-  res.send('send profile edits');
+  knex('users')
+  .returning('*')
+  .where({username: req.body.username})
+  .first()
+  .update(req.body)
+  .then(user => {
+    let profileURL = '/users/' + req.body.username;
+    res.redirect(profileURL)
+  }).catch( (err) => {
+  next(err);
+  })
 })
-// .catch( (err) => {
-//   next(err);
-// })
 
 //DELETE '/users/<username>' - delete the user profile information
 router.delete('/:username', (req, res, next) => {
