@@ -9,8 +9,7 @@ const bodyParser = require('body-parser');
 const session = require('cookie-session');
 const cookieParser = require('cookie-parser');
 const cloudinary = require('cloudinary-core');
-const cl = new cloudinary.Cloudinary({cloud_name: "recipeers", secure: true});
-
+const cl = new cloudinary.Cloudinary({cloud_name: "dcc5vb7ot", secure: true});
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
