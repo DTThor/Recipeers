@@ -13,7 +13,7 @@ main {
 }
 
 footer {
-  position: absolute;
+  position: relative;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -29,4 +29,46 @@ footer {
 .side-nav {
   height: auto;
   padding: 15px;
+}
+
+.profileContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.profileCards {
+  flex: 1 1 20%;
+  padding: 5px;
+  margin: 10px;
+  height: auto;
+  text-align: center;
+}
+
+.profileCards:hover {
+  color: white;
+  background-color: #9ccc65;
+}
+
+.profileCards a {
+  color: black;
+}
+
+.profileCards:hover a {
+  color: white;
+}
+
+.profilePicture {
+  display: block;
+  border-radius: 100%;
+  margin: auto;
+  height: 200px;
+  width: 200px;
+}
+
+#upload_widget_opener {
+  display: block;
+  padding: 10px;
+  color: #9e9e9e;
 }
