@@ -5,7 +5,7 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('users').insert([
-        {name: 'Amanda', username: 'amandarulez', location: 'Austin, TX', email: 'af@hotttmail.com', hashedPass: '???', total_following: 57, total_followers: 999999999, },
+        {name: 'Amanda', username: 'amandarulez', location: 'Austin, TX', email: 'af@hotttmail.com', hashedPass: '$2a$12$TXc3608dPDej5345tl5IAOVOWEXThiNo8t2ch0bjfznWAZiy12Jsq', total_following: 57, total_followers: 999999999, },
         {name: 'Dylan', username: 'dtthor', location: 'Austin, TX', email: 'dt@hotttmail.com', hashedPass: '???', total_following: 153, total_followers: 2, },
         {name: 'Jayme', username: 'yoitsJayme', location: 'Austin, TX', email: 'jr@hotttmail.com', hashedPass: '???', total_following: 89, total_followers: 999999999, },
         {name: 'John', username: 'soundboardChef', location: 'Austin, TX', email: 'jm@hotttmail.com', hashedPass: '???', total_following: 25, total_followers: 999999999, },
