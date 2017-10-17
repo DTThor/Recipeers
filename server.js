@@ -6,18 +6,22 @@ const app = express();
 const morgan = require('morgan');
 const methodOverride = require('express-method-override');
 const bodyParser = require('body-parser');
-const cookieSession = require('cookie-session')
+const session = require('cookie-session');
 const cookieParser = require('cookie-parser');
+//set up ejs
+app.set('view engine', 'ejs');
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 
 //set up cookies
-const secret = process.env.SECRET_KEY;
+const secret1 = process.env.SECRET_KEY1;
+const secret2 = process.env.SECRET_KEY2;
 app.use(cookieParser());
-app.use(cookieSession({
+app.use(session({
   name: 'session',
-  keys: secret,
+  keys: [secret1,secret2],
   maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }));
 
@@ -33,17 +37,15 @@ const isLoggedIn = (req,res,next) => {
   }
 }
 
-// check if user is logged in for every route
-app.use(isLoggedIn)
-
 // logging out
 app.get('/logout', (req, res) => {
   req.session = null;
   res.redirect('/')
 })
 
-//set up ejs
-app.set('view engine', 'ejs');
+// check if user is logged in for every route
+app.use(isLoggedIn)
+
 
 //home page route
 app.get('/', (req, res) => {

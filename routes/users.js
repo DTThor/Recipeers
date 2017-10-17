@@ -3,6 +3,8 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
 const bcrypt = require('bcrypt-as-promised');
+// const session = require('cookie-session');
+// const cookieParser = require('cookie-parser');
 
 //GET '/users/signin' - a page for logging in or registering
 router.get('/signin', (req, res, next) => {
@@ -14,18 +16,16 @@ router.post('/login', (req, res, next) => {
   knex('users')
   .where({username: req.body.username})
   .first()
-  .then(user => bcrypt.compare(req.body.password,user.hashedpass))
+  .then(user => bcrypt.compare(req.body.password,user.hashedpass)
     .then(valid => {
       if(valid) {
         req.session.user = user;
         let profileURL = '/users/' + req.body.username;
         res.redirect(profileURL)
-      } else {
-        res.redirect('users/signin')
       }
-  }).catch( (err) => {
-    next(err);
-  })
+  }).catch( (invalid) => {
+    res.redirect('/signin');
+  }))
 })
 
 //POST '/users/register' - register a new user, redirect to user profile
