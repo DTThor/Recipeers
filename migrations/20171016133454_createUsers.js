@@ -6,7 +6,7 @@ exports.up = function(knex, Promise) {
     table.string('username').notNullable();
     table.string('location');
     table.string('email').notNullable();
-    table.string('hashedPass').notNullable();
+    table.string('hashedpass').notNullable();
     table.integer('total_following');
     table.integer('total_followers');
   })
