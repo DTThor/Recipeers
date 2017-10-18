@@ -1,26 +1,24 @@
 <%- include('../partials/header') %>
 
 <main class = 'container'>
-  <div class= 'row'>
+  <div class = 'row'>
     <% recipes.forEach((recipe) => { %>
-      <!--container card -->
-      <div class = 'card'>
-        <div class = 'row valign-wrapper'>
-          <div class = 'col s2 valign'>
-            <img class='profilePicture' src="https://assets.merriam-webster.com/mw/images/article/art-wap-article-main/puppy-3143-7cfb4d6a42dfc7d9d1ae7e23126279e8@1x.jpg" alt="User Profile Picture" style="width:50px;height:50px;">
-          </div>
-          <div class = 'col s6'>
-            <h5><a href="#" class="black-text"><%= recipe.name %></a></h5> <br>
-            <a href="#"><i class="material-icons black-text">favorite</i></a>
-            <a href="#"><i class="material-icons black-text">check</i></a>
-            <a href="#"><i class="material-icons black-text">forward</i></a>
-          </div>
-          <div class = 'col s4 valign'>
-            <img src="http://images.media-allrecipes.com/userphotos/250x250/3570996.jpg" alt="Recipe Photo" class="right" style="width:100px;height:100px;">
+      <div class = 'col s12 m6 l4'>
+        <div class = 'card' style="min-height:200px">
+          <div class = 'row valign-wrapper'>
+            <div class = 'col s4 valign center-align'>
+              <img  src="http://images.media-allrecipes.com/userphotos/250x250/3570996.jpg" alt="Recipe Photo" style="width:50px;height:50px;">
+              </div>
+              <div class = 'col s8'>
+                <h5 class="truncate"><a href="#" class="black-text"> <%= recipe.name %> </a></h5>
+                Upvotes: <%= recipe.upvotes %> <br>
+                Cook Time: <%= recipe.total_time %> minutes
+              </div>
           </div>
         </div>
       </div>
     <% }) %>
+  </div>
 </main>
 
   <%- include('../partials/footer') %>
