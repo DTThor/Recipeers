@@ -134,7 +134,7 @@ router.get('/:username/favorites', (req, res, next) => {
     .innerJoin('favorites', 'recipes.id', 'favorites.favorite_recipe_id')
     .then(favorites => {
       console.log(favorites)
-      res.render('users/favorites', {user})
+      res.render('users/favorites', {user:user, favorites:favorites})
     }).catch( (err) => {
       next(err);
     })
