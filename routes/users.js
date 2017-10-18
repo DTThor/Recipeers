@@ -59,7 +59,7 @@ router.get('/:username', (req, res, next) => {
   .where({username: req.params.username})
   .first()
   .then(user => {
-    user.profilePic = cloudinary.image("sample.jpg")
+    //user.profile_pic_url = cloudinary.image("sample.jpg")
     res.render('users/profile', {user})
   }).catch( (err) => {
     next(err);
@@ -79,6 +79,24 @@ router.get('/:username/edit', (req, res, next) => {
     next(err);
   })
 })
+
+router.patch('/:username/updatePic', (req, res, next) => {
+  if(!req.body.profile_pic_url){
+    return;
+  }
+  knex('users')
+  .returning('*')
+  .where({username: req.params.username})
+  .first()
+  .update({profile_pic_url: req.body.profile_pic_url})
+  .then(user => {
+    let profileURL = '/users/' + req.body.username;
+    res.redirect(profileURL)
+  }).catch( (err) => {
+  next(err);
+  })
+})
+
 
 //PATCH '/users/<username>' - edit the user profile information
 router.patch('/:username', (req, res, next) => {
@@ -134,12 +152,10 @@ router.get('/:username/favorites', (req, res, next) => {
   .where({username: req.params.username})
   .first()
   .then(user => {
-    console.log(user.id);
     knex('recipes')
     .where( 'favorites.user_id', user.id)
     .innerJoin('favorites', 'recipes.id', 'favorites.favorite_recipe_id')
     .then(favorites => {
-      console.log(favorites)
       res.render('users/profile', {user})
     }).catch( (err) => {
       next(err);

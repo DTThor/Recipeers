@@ -14,7 +14,7 @@
             <label for="location">Location:</label>
             <input type="text" name="location">
             <a href="#" id="upload_widget_opener"><i class="material-icons">add_to_photos</i>Set Profile Picture</a>
-            <button type="submit" class ="btn light-green lighten-1">Edit Information</button>
+            <button type="submit" class ="btn light-green lighten-1">Save Edits</button>
           </form>
         </main>
       </div>
@@ -22,8 +22,19 @@
   </div>
   <script type="text/javascript">
   document.getElementById("upload_widget_opener").addEventListener("click", function() {
-    cloudinary.openUploadWidget({ cloud_name: 'dcc5vb7ot', upload_preset: 'ft2wpaew'},
-    function(error, result) { console.log(error, result) });
+    cloudinary.openUploadWidget({ cloud_name: 'dcc5vb7ot', upload_preset: 'ft2wpaew', theme: 'minimal', multiple: false},
+    function(error, result) {
+      console.log(error, result)
+      $.ajax({
+        method: 'POST',
+        url: 'updatePic?_method=PATCH',
+        data: {profile_pic_url: result[0].url}
+      }).done(results => console.log(results) );
+    });
   }, false);
+  $(document).on('cloudinarywidgetsuccess', function(e, data) {
+  
+  console.log("Global success", e, data);
+});
   </script>
   <%- include('../partials/footer') %>
