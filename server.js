@@ -3,6 +3,7 @@ require('dotenv').load();
 const PORT = process.env.PORT || 8000;
 const express = require('express');
 const app = express();
+const knex = require('./db/knex');
 const morgan = require('morgan');
 const methodOverride = require('express-method-override');
 const bodyParser = require('body-parser');
@@ -61,7 +62,13 @@ app.use(morgan('dev'));
 
 //home page route
 app.get('/', (req, res) => {
-  res.render('index.ejs');
+  knex('recipes')
+  .orderBy('upvotes')
+  .then(recipes => {
+    res.render('index.ejs', {recipes});
+  }).catch(err => {
+    next(err);
+  })
 });
 
 
