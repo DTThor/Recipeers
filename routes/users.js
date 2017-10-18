@@ -42,7 +42,7 @@ router.post('/register', (req, res, next) => {
    .returning('username')
    .insert({username: req.body.username, hashedpass: hash})
    .then(user => {
-     req.session.user = user[0];
+     req.session.user = user;
      let editURL = '/users/' + req.body.username + '/edit';
      res.redirect(editURL)
     })
@@ -54,7 +54,6 @@ router.post('/register', (req, res, next) => {
 //GET '/users/<username>' - get the profile page for a user, edit access is avail
 //to the user
 router.get('/:username', (req, res, next) => {
-  console.log("req.session:", req.session)
   let loggedIn = false;
   if (req.session.user && req.session.user.username===req.params.username) {
     loggedIn = true;
@@ -77,6 +76,7 @@ router.get('/:username/edit', (req, res, next) => {
   .where({username: req.params.username})
   .first()
   .then(user => {
+    req.session.user = user;
     res.render('users/edit', {user})
   }).catch( (err) => {
     next(err);
