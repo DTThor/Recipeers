@@ -19,7 +19,7 @@
               <!--
 
                 FIGURE OUT WHAT TO DO WITH THIS!!!
-                
+
                 <%=user.profilePic%>
                 <script type="text/javascript">
                 let profPic = '<%=user.profilePic%>';
@@ -33,21 +33,21 @@
 
             <div class = 'profileContainer'>
                 <div class = 'profileCards'>
-                  <a href="/users/<%=user.id%>/recipes"><h6>Recipes</h6></a>
+                  <a href="/users/<%=user.username%>/recipes"><h6>Recipes</h6></a>
                 </div>
 
                 <div class = 'profileCards'>
-                  <a href="/users/<%=user.id%>/favorites"><h6>Favorites</h6></a>
-                </div>
-
-
-                <div class = 'profileCards'>
-                  <a href="/users/<%=user.id%>/following"><h6>Following</h6></a>
+                  <a href="/users/<%=user.username%>/favorites"><h6>Favorites</h6></a>
                 </div>
 
 
                 <div class = 'profileCards'>
-                  <a href="/users/<%=user.id%>/followers"><h6>Followers</h6></a>
+                  <a href="/users/<%=user.username%>/following"><h6>Following</h6></a>
+                </div>
+
+
+                <div class = 'profileCards'>
+                  <a href="/users/<%=user.username%>/followers"><h6>Followers</h6></a>
                 </div>
             </div>
 
