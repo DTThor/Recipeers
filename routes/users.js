@@ -100,11 +100,14 @@ router.delete('/:username', (req, res, next) => {
 //GET 'users/<username>/recipes'
 router.get('/:username/recipes', (req, res, next) => {
     knex('users')
+    .select('users.name')
     .where({username: req.params.username})
     .first()
     .then(user => {
+      console.log(user)
       knex('users')
-      //.select('recipes.name', 'recipes.upvotes', 'recipes.ingredients')
+      //selects can be removed to return all columns
+      .select('recipes.name', 'recipes.upvotes', 'recipes.ingredients')
       .where({username: req.params.username})
       .innerJoin('recipes', 'users.id', 'recipes.user_id')
       .then(recipes => {
@@ -115,22 +118,18 @@ router.get('/:username/recipes', (req, res, next) => {
       })
     })
    })
-
-//   res.send('view recipes of user')
-// })
-// .catch( (err) => {
-//   next(err);
-// })
-
 //GET 'users/<username>/favorites'
+
 router.get('/:username/favorites', (req, res, next) => {
   knex('users')
   .where({username: req.params.username})
   .first()
   .then(user => {
-    console.log(user.id);
+    //console.log(user.id);
     knex('recipes')
+    .select('recipes.name', 'upvotes')
     .where( 'favorites.user_id', user.id)
+    .orderBy('upvotes', 'desc')
     .innerJoin('favorites', 'recipes.id', 'favorites.favorite_recipe_id')
     .then(favorites => {
       console.log(favorites)
@@ -140,29 +139,50 @@ router.get('/:username/favorites', (req, res, next) => {
     })
   })
  })
-//   res.send('view favorites of user')
-// })
-
-
-// .catch( (err) => {
-//   next(err);
-// })
 
 //GET 'users/<username>/following'
 router.get('/:username/following', (req, res, next) => {
-  res.send('view users a user follows')
-})
-// .catch( (err) => {
-//   next(err);
-// })
+  knex('users')
+  .where({username: req.params.username})
+  .first()
+  //why doesn't select work here?
+  //.select('users.name')
+  .then(user => {
+    console.log(user.name);
+    //console.log(user);
+    //why did I have to use following and not users, get error with users?
+    knex('following')
+    //.select()
+    .where( 'following.user_id', user.id)
+    //not specifying table still works, why, how??
+    .select('name', 'following_user_id')
+    .innerJoin('users', 'users.id', 'following.following_user_id')
+    .then(following => {
+      console.log(following)
+      res.render('users/profile', {user})
+    }).catch( (err) => {
+      next(err);
+    })
+  })
+ })
 
 //GET 'users/<username>/followers'
 router.get('/:username/followers', (req, res, next) => {
-  res.send('view users following a user')
-})
-// .catch( (err) => {
-//   next(err);
-// })
+  knex('users')
+  .where({username: req.params.username})
+  .first()
+  .then(user => {
+    knex('following')
+    .where( 'following.following_user_id', user.id)
+    // .select('users.name', 'users.username')
+    .innerJoin('users','users.id','following.user_id')
+    .then(followers => {
+      res.send(followers);
+    }).catch( (err) => {
+      next(err);
+    })
+  })
+ })
 
 //search users
 router.get('/search', (req, res, next) => {
