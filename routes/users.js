@@ -54,13 +54,17 @@ router.post('/register', (req, res, next) => {
 //GET '/users/<username>' - get the profile page for a user, edit access is avail
 //to the user
 router.get('/:username', (req, res, next) => {
-
+  console.log("req.session:", req.session)
+  let loggedIn = false;
+  if (req.session.user && req.session.user.username===req.params.username) {
+    loggedIn = true;
+  }
   knex('users')
   .where({username: req.params.username})
   .first()
   .then(user => {
     user.profilePic = cloudinary.image("sample.jpg")
-    res.render('users/profile', {user})
+    res.render('users/profile', {user:user, loggedIn:loggedIn})
   }).catch( (err) => {
     next(err);
   })

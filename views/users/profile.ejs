@@ -4,6 +4,12 @@
           <!--container card -->
           <main class = 'card'>
 
+            <div class = 'right-align'>
+              <% if (loggedIn) { %>
+              <a href="/users/<%=user.username%>/edit"><button class='btn light-green lighten-1'>Edit</button></a>
+              <% } %>
+            </div>
+
             <div class = 'center'>
               <h1><%= user.username %></h1>
 
