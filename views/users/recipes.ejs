@@ -1,7 +1,24 @@
 <%- include('../partials/header') %>
 
 <main class = 'container'>
-  <div class = 'card'>all the recipes</div>
+  <div class = 'row'>
+    <% recipes.forEach((recipe) => { %>
+      <div class = 'col s12 m6 l4'>
+        <div class = 'card' style="min-height:200px">
+          <div class = 'row valign-wrapper'>
+            <div class = 'col s4 valign center-align'>
+              <img  src="http://images.media-allrecipes.com/userphotos/250x250/3570996.jpg" alt="Recipe Photo" style="width:50px;height:50px;">
+              </div>
+              <div class = 'col s8'>
+                <h5 class="truncate"><a href="#" class="black-text"> <%= recipe.name %> </a></h5>
+                Upvotes: <%= recipe.upvotes %> <br>
+                Cook Time: <%= recipe.total_time %> minutes
+              </div>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  </div>
 </main>
 
   <%- include('../partials/footer') %>

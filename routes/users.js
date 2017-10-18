@@ -54,13 +54,16 @@ router.post('/register', (req, res, next) => {
 //GET '/users/<username>' - get the profile page for a user, edit access is avail
 //to the user
 router.get('/:username', (req, res, next) => {
-
+  console.log("req.session:", req.session)
+  let loggedIn = false;
+  if (req.session.user && req.session.user.username===req.params.username) {
+    loggedIn = true;
+  }
   knex('users')
   .where({username: req.params.username})
   .first()
   .then(user => {
-    //user.profile_pic_url = cloudinary.image("sample.jpg")
-    res.render('users/profile', {user})
+    res.render('users/profile', {user:user, loggedIn:loggedIn})
   }).catch( (err) => {
     next(err);
   })
@@ -127,26 +130,20 @@ router.get('/:username/recipes', (req, res, next) => {
     .where({username: req.params.username})
     .first()
     .then(user => {
+      console.log(user)
       knex('users')
-      //.select('recipes.name', 'recipes.upvotes', 'recipes.ingredients')
       .where({username: req.params.username})
       .innerJoin('recipes', 'users.id', 'recipes.user_id')
       .then(recipes => {
         console.log(recipes)
-        res.render('users/profile', {user})
+        res.render('users/recipes', {user:user, recipes:recipes})
       }).catch( (err) => {
         next(err);
       })
     })
    })
-
-//   res.send('view recipes of user')
-// })
-// .catch( (err) => {
-//   next(err);
-// })
-
 //GET 'users/<username>/favorites'
+
 router.get('/:username/favorites', (req, res, next) => {
   knex('users')
   .where({username: req.params.username})
@@ -154,37 +151,57 @@ router.get('/:username/favorites', (req, res, next) => {
   .then(user => {
     knex('recipes')
     .where( 'favorites.user_id', user.id)
+    .orderBy('upvotes', 'desc')
     .innerJoin('favorites', 'recipes.id', 'favorites.favorite_recipe_id')
     .then(favorites => {
+<<<<<<< HEAD
       res.render('users/profile', {user})
+=======
+      console.log(favorites)
+      res.render('users/favorites', {user:user, favorites:favorites})
+>>>>>>> 5cc8bed44fc2c28346c42d2abf1c95bde37c47a8
     }).catch( (err) => {
       next(err);
     })
   })
  })
-//   res.send('view favorites of user')
-// })
-
-
-// .catch( (err) => {
-//   next(err);
-// })
 
 //GET 'users/<username>/following'
 router.get('/:username/following', (req, res, next) => {
-  res.render('users/following')
-})
-// .catch( (err) => {
-//   next(err);
-// })
+  knex('users')
+  .where({username: req.params.username})
+  .first()
+  .then(user => {
+    console.log(user.name);
+    knex('following')
+    .where( 'following.user_id', user.id)
+    .innerJoin('users', 'users.id', 'following.following_user_id')
+    .then(following => {
+      console.log(following)
+      res.render('users/following', {user:user, following:following})
+    }).catch( (err) => {
+      next(err);
+    })
+  })
+ })
 
 //GET 'users/<username>/followers'
 router.get('/:username/followers', (req, res, next) => {
-  res.render('users/followers')
-})
-// .catch( (err) => {
-//   next(err);
-// })
+  knex('users')
+  .where({username: req.params.username})
+  .first()
+  .then(user => {
+    knex('following')
+    .where( 'following.following_user_id', user.id)
+    .innerJoin('users','users.id','following.user_id')
+    .then(followers => {
+      console.log(followers)
+      res.render('users/followers', {user:user, followers:followers});
+    }).catch( (err) => {
+      next(err);
+    })
+  })
+ })
 
 //search users
 router.get('/search', (req, res, next) => {
