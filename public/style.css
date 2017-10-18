@@ -4,16 +4,18 @@ html {
   min-height: 100%;
 }
 body {
-  margin: 0 0 35px;
+  margin: 0 0 120px;
 }
 
 main {
   margin-top: 30px;
   padding: 20px;
+  margin-bottom: 220px;
 }
 
 footer {
-  position: relative;
+  position: absolute;
+  height: 100px;
   left: 0;
   bottom: 0;
   width: 100%;

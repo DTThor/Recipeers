@@ -5,6 +5,12 @@ const knex = require('../db/knex');
 const bcrypt = require('bcrypt-as-promised');
 // const session = require('cookie-session');
 // const cookieParser = require('cookie-parser');
+const cloudinary = require('cloudinary');
+cloudinary.config({
+  cloud_name: "dcc5vb7ot",
+  api_key: '451134894389928',
+  api_secret: '9R_XPM5LnDgckyaED_zrLMm3mNc'
+})
 
 //GET '/users/signin' - a page for logging in or registering
 router.get('/signin', (req, res, next) => {
@@ -50,15 +56,15 @@ router.post('/register', (req, res, next) => {
 router.get('/:username', (req, res, next) => {
 
   knex('users')
-.where({username: req.params.username})
-.first()
-.then(user => {
-  res.render('users/profile', {user})
-}).catch( (err) => {
-  next(err);
+  .where({username: req.params.username})
+  .first()
+  .then(user => {
+    user.profilePic = cloudinary.image("sample.jpg")
+    res.render('users/profile', {user})
+  }).catch( (err) => {
+    next(err);
+  })
 })
-})
-
 
 
 
@@ -150,7 +156,7 @@ router.get('/:username/favorites', (req, res, next) => {
 
 //GET 'users/<username>/following'
 router.get('/:username/following', (req, res, next) => {
-  res.send('view users a user follows')
+  res.render('users/following')
 })
 // .catch( (err) => {
 //   next(err);
@@ -158,7 +164,7 @@ router.get('/:username/following', (req, res, next) => {
 
 //GET 'users/<username>/followers'
 router.get('/:username/followers', (req, res, next) => {
-  res.send('view users following a user')
+  res.render('users/followers')
 })
 // .catch( (err) => {
 //   next(err);
