@@ -130,10 +130,8 @@ router.get('/:username/recipes', (req, res, next) => {
     .where({username: req.params.username})
     .first()
     .then(user => {
-      console.log(user)
-      knex('users')
-      .where({username: req.params.username})
-      .innerJoin('recipes', 'users.id', 'recipes.user_id')
+      knex('recipes')
+      .where({user_id: user.id})
       .then(recipes => {
         console.log(recipes)
         res.render('users/recipes', {user:user, recipes:recipes})
