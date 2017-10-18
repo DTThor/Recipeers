@@ -115,7 +115,7 @@ router.get('/:username/recipes', (req, res, next) => {
       .innerJoin('recipes', 'users.id', 'recipes.user_id')
       .then(recipes => {
         console.log(recipes)
-        res.render('users/recipes', {user})
+        res.render('users/recipes', {user:user, recipes:recipes})
       }).catch( (err) => {
         next(err);
       })
