@@ -154,12 +154,8 @@ router.get('/:username/favorites', (req, res, next) => {
     .orderBy('upvotes', 'desc')
     .innerJoin('favorites', 'recipes.id', 'favorites.favorite_recipe_id')
     .then(favorites => {
-<<<<<<< HEAD
-      res.render('users/profile', {user})
-=======
       console.log(favorites)
       res.render('users/favorites', {user:user, favorites:favorites})
->>>>>>> 5cc8bed44fc2c28346c42d2abf1c95bde37c47a8
     }).catch( (err) => {
       next(err);
     })
