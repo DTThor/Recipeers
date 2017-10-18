@@ -118,11 +118,16 @@ router.patch('/:username', (req, res, next) => {
 
 //DELETE '/users/<username>' - delete the user profile information
 router.delete('/:username', (req, res, next) => {
-  res.send('delete user');
+  knex('users')
+  .where({username: req.params.username})
+  .first()
+  .del()
+  .then(() => {
+    res.redirect('/')
+  }).catch( (err) => {
+  next(err);
+  })
 })
-// .catch( (err) => {
-//   next(err);
-// })
 
 //GET 'users/<username>/recipes'
 router.get('/:username/recipes', (req, res, next) => {

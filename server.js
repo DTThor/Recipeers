@@ -61,7 +61,7 @@ app.use(isLoggedIn)
 app.use(morgan('dev'));
 
 //home page route
-app.get('/', (req, res) => {
+app.get('/', (req, res, next) => {
   knex('recipes')
   .orderBy('upvotes')
   .then(recipes => {
