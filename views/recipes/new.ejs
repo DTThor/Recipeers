@@ -1,0 +1,44 @@
+<%- include('../partials/header') %>
+
+<main>
+
+  <div class = 'container'>
+    <div class= 'row'>
+      <div class=".mediumScreen">
+        <main class = 'card'>
+          <form method="POST" action="">
+
+            <label for="name">Recipe Name:</label>
+            <input type="text" name="name">
+
+            <fieldset>
+              Ingredients
+              <label for="quantity">Quantity</label>
+              <input type="text" name="quantity">
+              <label for="uom">Unit of Measure</label>
+              <select class="" name="uom">
+                <option value="whole"></option>
+                <option value="clove"></option>
+                <option value="pinch"></option>
+                <option value="teaspoon"></option>
+                <option value="tablespoon"></option>
+                <option value="cups"></option>
+                <option value="ounces"></option>
+                <option value="pounds"></option>
+              </select>
+              <label for="ingredient"></label>
+              <input type="text" name="ingredient">
+
+            </fieldset>
+
+            <button type="submit" class ="btn light-green lighten-1">Save Edits</button>
+          </form>
+        </main>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+
+  <%- include('../partials/footer') %>

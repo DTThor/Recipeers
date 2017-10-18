@@ -15,7 +15,7 @@ router.get('/', (req, res, next) => {
 
 //GET '/recipes/new'
 router.get('/new', (req, res, next) => {
-  res.send('new recipe page');
+  res.render('recipes/new');
 })
 //.catch( (err) => {
 //   next(err);
