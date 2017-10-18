@@ -115,7 +115,7 @@ router.get('/:username/recipes', (req, res, next) => {
       .innerJoin('recipes', 'users.id', 'recipes.user_id')
       .then(recipes => {
         console.log(recipes)
-        res.render('users/profile', {user})
+        res.render('users/recipes', {user})
       }).catch( (err) => {
         next(err);
       })
@@ -134,13 +134,13 @@ router.get('/:username/favorites', (req, res, next) => {
   .where({username: req.params.username})
   .first()
   .then(user => {
-    console.log(user.id);
+    //console.log(user.id);
     knex('recipes')
     .where( 'favorites.user_id', user.id)
     .innerJoin('favorites', 'recipes.id', 'favorites.favorite_recipe_id')
     .then(favorites => {
       console.log(favorites)
-      res.render('users/profile', {user})
+      res.render('users/favorites', {user})
     }).catch( (err) => {
       next(err);
     })
