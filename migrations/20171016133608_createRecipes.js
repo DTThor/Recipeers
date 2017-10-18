@@ -4,8 +4,8 @@ exports.up = function(knex, Promise) {
     table.increments();
     table.string('name').notNullable();
     table.integer('user_id').notNullable();
-    table.string('ingredients');
-    table.string('instructions');
+    table.jsonb('ingredients');
+    table.string('instructions', 1000);
     table.integer('upvotes');
     table.boolean('gluten_free');
     table.boolean('dairy_free');

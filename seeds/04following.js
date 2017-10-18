@@ -3,8 +3,8 @@ exports.seed = function(knex, Promise) {
   return knex('following').del()
     .then(function () {
       // Inserts seed entries
-      return knex('following').insert([
-        {user_id: 1, following_user_id: 2},
+    /*   return knex('following').insert([
+       {user_id: 1, following_user_id: 2},
         {user_id: 1, following_user_id: 3},
         {user_id: 1, following_user_id: 4},
         {user_id: 1, following_user_id: 5},
@@ -49,6 +49,6 @@ exports.seed = function(knex, Promise) {
         {user_id: 9, following_user_id: 6},
         {user_id: 9, following_user_id: 7},
         {user_id: 9, following_user_id: 8}
-      ]);
+      ]); */
     });
 };
