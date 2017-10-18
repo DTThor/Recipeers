@@ -153,7 +153,7 @@ router.get('/:username/following', (req, res, next) => {
     .innerJoin('users', 'users.id', 'following.following_user_id')
     .then(following => {
       console.log(following)
-      res.render('users/following', {user})
+      res.render('users/following', {user:user, following:following})
     }).catch( (err) => {
       next(err);
     })
@@ -171,7 +171,7 @@ router.get('/:username/followers', (req, res, next) => {
     .innerJoin('users','users.id','following.user_id')
     .then(followers => {
       console.log(followers)
-      res.render('users/followers', {user});
+      res.render('users/followers', {user:user, followers:followers});
     }).catch( (err) => {
       next(err);
     })
