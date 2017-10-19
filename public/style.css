@@ -131,3 +131,24 @@ footer a {
 .flexInstr {
   flex: 1 1 100%;
 }
+
+@media screen and (max-width: 700px){
+  .flexName {
+    order: 1;
+  }
+
+  .flexImgBox {
+    flex: 1 1 100%;
+    order: 2;
+  }
+
+  .flexIngred {
+    flex: 1 1 100%;
+    order: 3;
+  }
+
+  .flexInstr {
+    order: 4;
+  }
+
+}
