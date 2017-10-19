@@ -29,21 +29,20 @@ router.get('/', (req, res, next) => {
         return knex('recipes')
         .whereIn('user_id', followers)
         .then(fetchedRecipes => {
-          recipes = fetchedRecipes;
           return knex('users')
           .join('recipes', 'users.id', '=', 'user_id')
+          .whereIn('user_id', followers)
           .returning('*')
-          .then(authors => {
-            console.log('THE AUTHORS ARE... ', authors);
-            res.render('index.ejs', {user:user, following:following, recipes:recipes, authors:authors});
+          .then(recipe_user => {
+            res.render('index.ejs', {recipe_user:recipe_user});
           })
+          .catch(err => {
+            next(err);
         })
-      }).catch(err => {
-        next(err);
       })
     })
-
-  }
+  })
+}
 
   else {
     knex('recipes')
