@@ -63,20 +63,22 @@ router.post('/', (req, res, next) => {
 //   next(err);
 // });
 
-//GET '/share'
-router.get('/share', (req, res, next) => {
-  res.send('sharing an external recipe link');
-})
-//.catch( (err) => {
-//   next(err);
-// });
 
 //GET /recipe/recipename
-router.get('/:recipename', (req, res, next) => {
-  res.send('see a particular recipe');
+router.get('/:id', (req, res, next) => {
+  knex('recipes')
+  .where({id: req.params.id})
+  .first()
+  .then(recipe => {
+    let recipeUser = recipe.user_id;
+    knex('users')
+    .where({id: recipeUser})
+    .then(user => {
+      res.render('recipes/show', {recipe:recipe, user:user});
+    }).catch( (err) => {
+       next(err);
+     });
+  })
 })
-// .catch( (err) => {
-//   next(err);
-// });
 
 module.exports = router;
