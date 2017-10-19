@@ -14,14 +14,23 @@ router.post('/', (req, res, next) => {
 
   let recipeName = req.body.name;
   let ingredients = [];
-
-  for (let i = 0; i < req.body.ingredient.length; i++) {
+  if (req.body.ingredients) {
+    for (let i = 0; i < req.body.ingredient.length; i++) {
+      let ingredient = {};
+      ingredient.ingredient = req.body.ingredient[i];
+      ingredient.uom = req.body.uom[i];
+      ingredient.quantity = parseInt(req.body.quantity[i]);
+      ingredients.push(ingredient);
+    }
+  }
+  else {
     let ingredient = {};
-    ingredient.ingredient = req.body.ingredient[i];
-    ingredient.uom = req.body.uom[i];
-    ingredient.quantity = parseInt(req.body.quantity[i]);
+    ingredient.ingredient = req.body.ingredient;
+    ingredient.uom = req.body.uom;
+    ingredient.quantity = parseInt(req.body.quantity);
     ingredients.push(ingredient);
   }
+
   let recipeInstructions = req.body.instructions;
   let isVegan = false;
   let isVegetarian = false;
