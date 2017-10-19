@@ -11,9 +11,8 @@
           </div>
           <div class = 'col s6'>
             <h5><a href="#" class="black-text"><%= recipe.name %></a></h5> <br>
-            <a href="#"><i class="material-icons black-text">favorite</i></a>
-            <a href="#"><i class="material-icons black-text">check</i></a>
-            <a href="#"><i class="material-icons black-text">forward</i></a>
+            <a href="#"><i class="material-icons black-text" id="favorite">favorite</i></a>
+            <a href="/recipes/<%= recipe.id %>/upvote"><i class="material-icons black-text" id="upvote">thumb_up</i></a>
           </div>
           <div class = 'col s4 valign'>
             <img src="http://images.media-allrecipes.com/userphotos/250x250/3570996.jpg" alt="Recipe Photo" class="right" style="width:100px;height:100px;">
