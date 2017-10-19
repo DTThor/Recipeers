@@ -70,10 +70,9 @@ img
 ##  3. Browse recipes 
 
 <br><br>
-[![http://imgur.com/a/F0bIP](http://i.imgur.com/9ZCH9e7.png)](http://i.imgur.com/9ZCH9e7.png)
+img
 <br>
-* Anyone who has downloaded the extension can log in right on the extension popup itself.
-* Players can view Sprintr game stats directly from the extension for any competition they're a part of.
+* do something
 <br><br><br><br>
 
 
