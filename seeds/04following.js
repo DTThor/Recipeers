@@ -2,7 +2,6 @@ exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
   return knex('following').del()
     .then(function () {
-      // Inserts seed entries
        return knex('following').insert([
        {user_id: 1, following_user_id: 2},
         {user_id: 1, following_user_id: 3},

@@ -63,20 +63,40 @@ router.post('/', (req, res, next) => {
 //   next(err);
 // });
 
-//GET '/share'
-router.get('/share', (req, res, next) => {
-  res.send('sharing an external recipe link');
+
+// GET recipes/:recipeId/upvote
+router.get('/:recipeId/upvote', (req, res, next) => {
+  if(req.session.user) {
+    knex('recipes')
+    .returning('*')
+    .where({id: req.params.recipeId})
+    .first()
+    .update({upvotes: knex.raw('upvotes + 1')})
+    .then(recipe => {
+      res.redirect('/')
+    }).catch( (err) => {
+       next(err);
+     });
+  } else {
+    res.redirect('/users/signin')
+  }
 })
-//.catch( (err) => {
-//   next(err);
-// });
 
 //GET /recipe/recipename
-router.get('/:recipename', (req, res, next) => {
-  res.send('see a particular recipe');
+router.get('/:id', (req, res, next) => {
+  knex('recipes')
+  .where({id: req.params.id})
+  .first()
+  .then(recipe => {
+    let recipeUser = recipe.user_id;
+    knex('users')
+    .where({id: recipeUser})
+    .then(user => {
+      res.render('recipes/show', {recipe:recipe, user:user});
+    }).catch( (err) => {
+       next(err);
+     });
+  })
 })
-// .catch( (err) => {
-//   next(err);
-// });
 
 module.exports = router;
