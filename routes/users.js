@@ -3,8 +3,6 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
 const bcrypt = require('bcrypt-as-promised');
-// const session = require('cookie-session');
-// const cookieParser = require('cookie-parser');
 const cloudinary = require('cloudinary');
 cloudinary.config({
   cloud_name: "dcc5vb7ot",
@@ -118,11 +116,16 @@ router.patch('/:username', (req, res, next) => {
 
 //DELETE '/users/<username>' - delete the user profile information
 router.delete('/:username', (req, res, next) => {
-  res.send('delete user');
+  knex('users')
+  .where({username: req.params.username})
+  .first()
+  .del()
+  .then(() => {
+    res.redirect('/')
+  }).catch( (err) => {
+  next(err);
+  })
 })
-// .catch( (err) => {
-//   next(err);
-// })
 
 //GET 'users/<username>/recipes'
 router.get('/:username/recipes', (req, res, next) => {
@@ -133,7 +136,6 @@ router.get('/:username/recipes', (req, res, next) => {
       knex('recipes')
       .where({user_id: user.id})
       .then(recipes => {
-        console.log(recipes)
         res.render('users/recipes', {user:user, recipes:recipes})
       }).catch( (err) => {
         next(err);
@@ -152,7 +154,6 @@ router.get('/:username/favorites', (req, res, next) => {
     .orderBy('upvotes', 'desc')
     .innerJoin('favorites', 'recipes.id', 'favorites.favorite_recipe_id')
     .then(favorites => {
-      console.log(favorites)
       res.render('users/favorites', {user:user, favorites:favorites})
     }).catch( (err) => {
       next(err);
@@ -166,12 +167,10 @@ router.get('/:username/following', (req, res, next) => {
   .where({username: req.params.username})
   .first()
   .then(user => {
-    console.log(user.name);
     knex('following')
     .where( 'following.user_id', user.id)
     .innerJoin('users', 'users.id', 'following.following_user_id')
     .then(following => {
-      console.log(following)
       res.render('users/following', {user:user, following:following})
     }).catch( (err) => {
       next(err);
@@ -189,7 +188,6 @@ router.get('/:username/followers', (req, res, next) => {
     .where( 'following.following_user_id', user.id)
     .innerJoin('users','users.id','following.user_id')
     .then(followers => {
-      console.log(followers)
       res.render('users/followers', {user:user, followers:followers});
     }).catch( (err) => {
       next(err);

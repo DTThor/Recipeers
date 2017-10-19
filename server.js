@@ -3,7 +3,6 @@ require('dotenv').load();
 const PORT = process.env.PORT || 8000;
 const express = require('express');
 const app = express();
-const knex = require('./db/knex');
 const morgan = require('morgan');
 const methodOverride = require('express-method-override');
 const bodyParser = require('body-parser');
@@ -50,33 +49,22 @@ const isLoggedIn = (req,res,next) => {
 // logging out
 app.get('/logout', (req, res) => {
   req.session = null;
-  res.redirect('/')
+  res.redirect('/index')
 })
 
 // check if user is logged in for every route
 app.use(isLoggedIn)
 
-
 //set up morgan
 app.use(morgan('dev'));
 
-//home page route
-app.get('/', (req, res, next) => {
-  knex('recipes')
-  .orderBy('upvotes')
-  .then(recipes => {
-    res.render('index.ejs', {recipes});
-  }).catch(err => {
-    next(err);
-  })
-});
-
-
 //bring in other routes
+const index = require('./routes/index');
 const recipes = require('./routes/recipes');
 const users = require('./routes/users');
 app.use('/recipes', recipes);
 app.use('/users', users);
+app.use('/index', index);
 
 //port listening
 app.listen(PORT, ()=>{
