@@ -81,7 +81,23 @@ router.get('/:recipeId/upvote', (req, res, next) => {
   }
 })
 
-//GET /recipe/id
+// GET /recipes/:recipeId/addFavorite
+router.get('/:recipeId/addFavorite', (req, res, next) => {
+  if(req.session.user) {
+    knex('favorites')
+    .returning('*')
+    .insert({user_id: req.session.user.id, favorite_recipe_id: req.params.recipeId})
+    .then(recipe => {
+      res.redirect('/')
+    }).catch( (err) => {
+       next(err);
+     });
+  } else {
+    res.redirect('/users/signin')
+  }
+})
+
+//GET /recipe/recipename
 router.get('/:id', (req, res, next) => {
   let recipe = null;
   knex('recipes')
