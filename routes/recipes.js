@@ -64,6 +64,24 @@ router.post('/', (req, res, next) => {
 // });
 
 
+// GET recipes/:recipeId/upvote
+router.get('/:recipeId/upvote', (req, res, next) => {
+  if(req.session.user) {
+    knex('recipes')
+    .returning('*')
+    .where({id: req.params.recipeId})
+    .first()
+    .update({upvotes: knex.raw('upvotes + 1')})
+    .then(recipe => {
+      res.redirect('/')
+    }).catch( (err) => {
+       next(err);
+     });
+  } else {
+    res.redirect('/users/signin')
+  }
+})
+
 //GET /recipe/recipename
 router.get('/:id', (req, res, next) => {
   knex('recipes')
