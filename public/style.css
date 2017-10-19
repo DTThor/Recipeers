@@ -87,3 +87,44 @@ footer a {
 .bigger {
   height: auto;
 }
+
+
+.recipeImg {
+  display: inline;
+}
+
+.aboutHalf {
+  width: 40%;
+  display: inline;
+}
+
+.aboutHalf span {
+  padding: 3px;
+}
+
+.aboutHalf ul {
+  width: 50%;
+}
+
+.flexRecipe {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.flexName {
+  flex: 1 1 100%;
+}
+
+.flexIngred {
+  flex: 1 1 40%;
+}
+
+.flexImgBox {
+  flex: 1 1 40%;
+}
+
+.flexInstr {
+  flex: 1 1 100%;
+}

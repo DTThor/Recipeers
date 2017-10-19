@@ -13,6 +13,7 @@ exports.up = function(knex, Promise) {
     table.boolean('vegan');
     table.boolean('pescatarian');
     table.integer('total_time');
+    table.string('recipe_pic_url')
     table.string('blogpost_url')
   })
 };
