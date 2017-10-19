@@ -13,10 +13,36 @@ cloudinary.config({
 
 //home page route
 router.get('/', (req, res, next) => {
-  console.log(req.session);
   if (req.session.user) {
+    let user = null;
+    let following = null;
+    let recipes = null;
     knex('users')
-    .where(id:)
+    .where({id:req.session.user.id})
+    .first()
+    .then(fetchedUser => {
+      user = fetchedUser;
+      return knex('following')
+      .where({user_id: fetchedUser.id})
+      .then(fetchedFollowers => {
+        followers = fetchedFollowers.map(f=>f.following_user_id)
+        return knex('recipes')
+        .whereIn('user_id', followers)
+        .then(fetchedRecipes => {
+          recipes = fetchedRecipes;
+          return knex('users')
+          .join('recipes', 'users.id', '=', 'user_id')
+          .returning('*')
+          .then(authors => {
+            console.log('THE AUTHORS ARE... ', authors);
+            res.render('index.ejs', {user:user, following:following, recipes:recipes, authors:authors});
+          })
+        })
+      }).catch(err => {
+        next(err);
+      })
+    })
+
   }
 
   else {
