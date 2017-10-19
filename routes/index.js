@@ -14,7 +14,7 @@ cloudinary.config({
 //home page route
 router.get('/', (req, res, next) => {
   knex('recipes')
-  .orderBy('upvotes')
+  .orderBy('upvotes', 'desc')
   .then(recipes => {
     res.render('index.ejs', {recipes});
   }).catch(err => {
