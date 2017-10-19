@@ -97,7 +97,7 @@ router.get('/:recipeId/addFavorite', (req, res, next) => {
   }
 })
 
-//GET /recipe/recipename
+//GET /recipe/:id
 router.get('/:id', (req, res, next) => {
   let recipe = null;
   knex('recipes')
