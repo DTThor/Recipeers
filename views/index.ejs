@@ -1,26 +1,49 @@
 <%- include('partials/header') %>
 
-
 <main class = 'container'>
   <div class= 'row'>
-    <% recipe_user.forEach((post) => { %>
-      <!--container card -->
-      <div class = 'card'>
-        <div class = 'row valign-wrapper'>
-          <div class = 'col s2 valign'>
-            <img class='profilePicture' src="<%= post.profile_pic_url %>" alt="User Profile Picture" style="width:50px;height:50px;">
-          </div>
-          <div class = 'col s6'>
-            <h5><a href="/recipes/<%=post.id%>" class="black-text"><%= post.name %></a></h5> <br>
-            <a href="/recipes/<%= post.id %>/addFavorite"><i class="material-icons black-text" id="favorite">favorite</i></a>
-            <a href="/recipes/<%= post.id %>/upvote"><i class="material-icons black-text" id="upvote">thumb_up</i></a>
-          </div>
-          <div class = 'col s4 valign'>
-           <img src="<%= post.recipe_pic_url %>" alt="Recipe Photo" class="right" style="width:150px;">
+
+    <% if (!currentUser) { %>
+      <% recipes.forEach((recipe) => { %>
+        <% console.log(recipe) %>
+        <!--container card -->
+        <div class = 'card'>
+          <div class = 'row valign-wrapper'>
+            <div class = 'col s2 valign'>
+              <img class='profilePicture' src="<%= recipe.profile_pic_url %>" alt="User Profile Picture" style="width:50px;height:50px;">
+            </div>
+            <div class = 'col s6'>
+              <h5><a href="/recipes/<%=recipe.recipeID%>" class="black-text"><%= recipe.recipe_name %></a></h5> <br>
+              <a href="/recipes/<%= recipe.recipeID %>/addFavorite"><i class="material-icons black-text" id="favorite">favorite</i></a>
+              <a href="/recipes/<%= recipe.recipeID %>/upvote"><i class="material-icons black-text" id="upvote">thumb_up</i></a>
+            </div>
+            <div class = 'col s4 valign'>
+             <img src="<%= recipe.recipe_pic_url %>" alt="Recipe Photo" class="right" style="width:150px;">
+            </div>
           </div>
         </div>
-      </div>
-    <% }) %>
+      <% }) %>
+    <% } else { %>
+      <% recipe_user.forEach((post) => { %>
+        <!--container card -->
+        <div class = 'card'>
+          <div class = 'row valign-wrapper'>
+            <div class = 'col s2 valign'>
+              <img class='profilePicture' src="<%= post.profile_pic_url %>" alt="User Profile Picture" style="width:50px;height:50px;">
+            </div>
+            <div class = 'col s6'>
+              <h5><a href="/recipes/<%=post.id%>" class="black-text"><%= post.name %></a></h5> <br>
+              <a href="/recipes/<%= post.id %>/addFavorite"><i class="material-icons black-text" id="favorite">favorite</i></a>
+              <a href="/recipes/<%= post.id %>/upvote"><i class="material-icons black-text" id="upvote">thumb_up</i></a>
+            </div>
+            <div class = 'col s4 valign'>
+             <img src="<%= post.recipe_pic_url %>" alt="Recipe Photo" class="right" style="width:150px;">
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    <% } %>
+
 </main>
 
 <%- include('partials/footer') %>

@@ -34,7 +34,7 @@ router.get('/', (req, res, next) => {
           .whereIn('user_id', followers)
           .returning('*')
           .then(recipe_user => {
-            res.render('index.ejs', {recipe_user:recipe_user});
+            res.render('index.ejs', {recipe_user});
           })
           .catch(err => {
             next(err);
@@ -43,9 +43,10 @@ router.get('/', (req, res, next) => {
     })
   })
 }
-
   else {
     knex('recipes')
+    .select('recipes.name AS recipe_name', 'recipe_pic_url', 'recipes.id AS recipeID', 'users.profile_pic_url')
+    .join('users', 'user_id', '=', 'users.id')
     .orderBy('upvotes', 'desc')
     .then(recipes => {
       res.render('index.ejs', {recipes});
