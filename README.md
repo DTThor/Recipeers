@@ -53,8 +53,6 @@ Additional:
  
  img
  
- <br>
- 
 * Enter in your credentials.
 * Upload awesome profile pic.
 * Log in.
