@@ -43,7 +43,9 @@ router.post('/register', (req, res, next) => {
      req.session.user = user;
      let editURL = '/users/' + req.body.username + '/edit';
      res.redirect(editURL)
-    })
+   }).catch( (err) => {
+     res.send('Username already exists. Please try again.')
+   })
  }).catch( (err) => {
    next(err);
   })
