@@ -79,3 +79,7 @@ footer {
 .ingredients {
   display: inline;
 }
+
+.bigger {
+  height: auto;
+}
