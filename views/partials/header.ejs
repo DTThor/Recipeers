@@ -35,8 +35,14 @@
           <% } %>
        </ul>
        <ul class="side-nav" id="mobile-demo">
+         <li><div class="row"><form method="post" action="/users/search">
+           <input class="input-field col s8" type="text" placeholder="Username" name="username"><button type="submit" class="btn col s4 light-green lighten-1" style="margin-top:7px;margin-bottom:7px;">Search</button></form></div></li>
          <li><a href="/recipes/new"><i class="right small material-icons">control_point</i></a></li>
-         <li><a href="/users/signin"><i class="right small material-icons">account_circle</i></a></li>
+         <% if (!currentUser) { %>
+         <li><a href="#"><div class = 'right avatarContainer'><a href="/users/signin"><i class="material-icons">account_circle</i></a></div></a></li>
+         <% } else { %>
+          <li><a href="#"><div class = 'right avatarContainer'><a href="/users/<%=currentUser.username%>"><img class='profilePicture' src="<%=currentUser.profile_pic_url%>" alt="User Profile Picture" style="width:50px;height:50px;margin-top:7px;margin-bottom:7px;"></a></div></a></li>
+        <% } %>
        </ul>
      </div>
    </nav>
