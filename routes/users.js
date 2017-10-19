@@ -213,6 +213,39 @@ router.get('/:username/addFollowing', (req, res, next) => {
   })
 })
 
+//GET 'users/<username>/deleteFollowing'
+router.get('/:username/deleteFollowing', (req, res, next) => {
+  knex('users')
+  .where({username: req.params.username})
+  .first()
+  .then(user => {
+    console.log(user)
+    knex('following')
+    .where({user_id:req.session.user.id})
+    .andWhere({following_user_id:user.id})
+    .del()
+    .then(following => {
+      res.redirect(`/users/${req.params.username}`)
+    })
+  })
+})
+
+router.delete('/:username', (req, res, next) => {
+  knex('users')
+  .where({username: req.params.username})
+  .first()
+  .del()
+  .then(() => {
+    res.redirect('/')
+  }).catch( (err) => {
+  next(err);
+  })
+})
+
+
+
+
+
 
 //search users
 router.get('/search', (req, res, next) => {
