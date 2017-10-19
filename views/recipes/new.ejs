@@ -11,44 +11,30 @@
 
               <div>Ingredients</div>
 
-              <label for="quantity">Quantity</label>
-              <input type="text" name="quantity" required>
-              <label for="uom">Unit of Measure</label>
-              <div class = "input-field">
-                <select name="uom" required>
-                  <option value="whole">whole</option>
-                  <option value="clove">clove</option>
-                  <option value="pinch">pinch</option>
-                  <option value="teaspoon">teaspoon</option>
-                  <option value="tablespoon">tablespoon</option>
-                  <option value="cups">cups</option>
-                  <option value="ounces">ounce</option>
-                  <option value="pounds">pounds</option>
-                </select>
+              <div id = 'newIng'>
+                <div class = 'oneIng inline'>
+                  <label for="quantity">Quantity</label>
+                  <input type="text" name="quantity" required>
+                  <label for="uom">Unit of Measure</label>
+                  <div class = "input-field">
+                    <select name="uom" required>
+                      <option value="whole">whole</option>
+                      <option value="clove">clove</option>
+                      <option value="pinch">pinch</option>
+                      <option value="teaspoon">teaspoon</option>
+                      <option value="tablespoon">tablespoon</option>
+                      <option value="cups">cups</option>
+                      <option value="ounces">ounce</option>
+                      <option value="pounds">pounds</option>
+                    </select>
+                  </div>
+                  <label for="ingredient">ingredient</label>
+                  <input type="text" name="ingredient" required>
+                </div>
               </div>
-              <label for="ingredient">ingredient</label>
-              <input type="text" name="ingredient" required>
+              <button type="button" onClick="addInput(event)" class="btn light-green lighten-1"><i class="material-icons">add_circle_outlin</i></button>
 
-              <label for="quantity">Quantity</label>
-              <input type="text" name="quantity" required>
-              <label for="uom">Unit of Measure</label>
-              <div class = "input-field">
-                <select name="uom" required>
-                  <option value="whole">whole</option>
-                  <option value="clove">clove</option>
-                  <option value="pinch">pinch</option>
-                  <option value="teaspoon">teaspoon</option>
-                  <option value="tablespoon">tablespoon</option>
-                  <option value="cups">cups</option>
-                  <option value="ounces">ounce</option>
-                  <option value="pounds">pounds</option>
-                </select>
-              </div>
-              <label for="ingredient">ingredient</label>
-              <input type="text" name="ingredient" required>
-
-
-              <label for="instructions">instructions</label>
+              <label style="display:block; top-margin:10px;" for="instructions">instructions</label>
               <div class = "input-field">
                 <textarea class="materialize-textarea" name="instructions" required></textarea>
               </div>
@@ -68,11 +54,14 @@
 
               <img id="thumbnail" src="" alt="">
 
+              <label for="picture_link">Picture URL</label>
               <input type="text" id="pic" name="recipe_pic_url" value="" display="none">
 
               <a href="#" id="upload_widget_opener"><i class="material-icons">add_to_photos</i>Photo of Recipe</a>
             <input id="submit-button" type="submit" class ="btn light-green lighten-1">
           </form>
+
+
           <script>
             // submit is disabled
             $('#submit-button').prop('disabled', true);
@@ -98,6 +87,15 @@
                 }, false);
                   });
 
+                  function addInput(event) {
+                    event.preventDefault();
+                    let htmlText = '<label for="quantity">Quantity</label><input type="text" name="quantity" required><label for="uom">Unit of Measure</label><div class = "input-field"><select name="uom" required><option value="whole">whole</option><option value="clove">clove</option><option value="pinch">pinch</option><option value="teaspoon">teaspoon</option><option value="tablespoon">tablespoon</option><option value="cups">cups</option><option value="ounces">ounce</option><option value="pounds">pounds</option></select></div><label for="ingredient">ingredient</label><input type="text" name="ingredient" required>';
+                    console.log('hello');
+                    let oneIng = document.createElement('div');
+                    oneIng.innerHTML = htmlText;
+                    document.getElementById('newIng').appendChild(oneIng);
+                    $('select').material_select();
+                  };
 
             </script>
         </main>

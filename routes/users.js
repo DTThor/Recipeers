@@ -40,11 +40,11 @@ router.post('/register', (req, res, next) => {
    .returning('username')
    .insert({username: req.body.username, hashedpass: hash})
    .then(user => {
-     req.session.user = user;
+     req.session.user = user[0];
      let editURL = '/users/' + req.body.username + '/edit';
      res.redirect(editURL)
    }).catch( (err) => {
-     res.send('Username already exists. Please try again.')
+     res.send('Account information incorrect, please try again.')
    })
  }).catch( (err) => {
    next(err);
