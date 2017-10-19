@@ -49,13 +49,14 @@ router.post('/', (req, res, next) => {
 
   knex('recipes')
   .returning('*')
-  .insert({name: recipeName, user_id: req.session.user.id, ingredients: JSON.stringify(ingredients), instructions: recipeInstructions, upvotes:0, gluten_free:isGluten_free, dairy_free:isDairy_free, vegetarian: isVegetarian, vegan: isVegan, pescatarian: isPescatarian, total_time: recipeTime})
+  .insert({name: recipeName, user_id: req.session.user.id, ingredients: JSON.stringify(ingredients), instructions: recipeInstructions, upvotes:0, gluten_free:isGluten_free, dairy_free:isDairy_free, vegetarian: isVegetarian, vegan: isVegan, pescatarian: isPescatarian, total_time: recipeTime, recipe_pic_url: req.body.recipe_pic_url})
+  //.first()
   .then(recipe => {
     console.log(recipe);
-    res.send('send new recipe in');
-  }).catch( (err) => {
-     next(err);
-   });
+    let recipeURL = '/recipes/' + recipe[0].id;
+    res.redirect(recipeURL);
+  })
+
 })
 
 // GET recipes/:recipeId/upvote
@@ -92,7 +93,7 @@ router.get('/:recipeId/addFavorite', (req, res, next) => {
   }
 })
 
-//GET /recipe/recipename
+//GET /recipe/:id
 router.get('/:id', (req, res, next) => {
   let recipe = null;
   knex('recipes')
