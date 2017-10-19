@@ -2,43 +2,55 @@
 
 <main>
 
-  <div class = 'container'>
-    <div class= 'row'>
+  <div class = 'container bigger'>
+    <div class= 'row bigger'>
       <div class=".mediumScreen">
-        <main class = 'card'>
-          <form method="POST" action="">
-
-            <label for="name">Recipe Name:</label>
+        <main class = 'card bigger'>
+          <form class = "newRecipe" method="POST" action="/recipes/">
+            <label for="name" required>Recipe Name:</label>
             <input type="text" name="name">
 
-            <fieldset>
-              Ingredients
+              <div>Ingredients</div>
               <label for="quantity">Quantity</label>
-              <input type="text" name="quantity">
+              <input type="text" name="quantity" required>
               <label for="uom">Unit of Measure</label>
-              <select class="" name="uom">
-                <option value="whole"></option>
-                <option value="clove"></option>
-                <option value="pinch"></option>
-                <option value="teaspoon"></option>
-                <option value="tablespoon"></option>
-                <option value="cups"></option>
-                <option value="ounces"></option>
-                <option value="pounds"></option>
-              </select>
-              <label for="ingredient"></label>
-              <input type="text" name="ingredient">
-
-            </fieldset>
-
+              <div class = "input-field">
+                <select name="uom" required>
+                  <option value="whole">whole</option>
+                  <option value="clove">clove</option>
+                  <option value="pinch">pinch</option>
+                  <option value="teaspoon">teaspoon</option>
+                  <option value="tablespoon">tablespoon</option>
+                  <option value="cups">cups</option>
+                  <option value="ounces">ounce</option>
+                  <option value="pounds">pounds</option>
+                </select>
+              </div>
+              <label for="ingredient">ingredient</label>
+              <input type="text" name="ingredient" required>
+              <label for="instructions">instructions</label>
+              <div class = "input-field">
+                <textarea class="materialize-textarea" name="instructions" required></textarea>
+              </div>
+              <label for="dietary">Dietary Restrictions</label>
+              <div class = "input-field">
+                <select name="dietary" required multiple>
+                  <option value="none">none</option>
+                  <option value="gluten_free">gluten free</option>
+                  <option value="dairy_free">dairy free</option>
+                  <option value="vegetarian">vegetarian</option>
+                  <option value="vegan">vegan</option>
+                  <option value="pescatarian">pescatarian</option>
+                </select>
+              </div>
+              <label for="total_time">Total Time</label>
+              <input type="text" name="total_time" required>
             <button type="submit" class ="btn light-green lighten-1">Save Edits</button>
           </form>
         </main>
       </div>
     </div>
   </div>
-
 </main>
-
 
   <%- include('../partials/footer') %>

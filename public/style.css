@@ -11,6 +11,7 @@ main {
   margin-top: 30px;
   padding: 20px;
   margin-bottom: 220px;
+  height: auto;
 }
 
 footer {
@@ -73,4 +74,12 @@ footer {
   display: block;
   padding: 10px;
   color: #9e9e9e;
+}
+
+.ingredients {
+  display: inline;
+}
+
+.bigger {
+  height: auto;
 }
