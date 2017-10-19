@@ -7,12 +7,16 @@
       <div class=".mediumScreen">
         <main class = 'card'>
           <form method="POST">
-          <label for="username">Username:</label>
-          <input type="text" name="username">
-          <label for="password">Password:</label>
-          <input type="password" name="password">
-          <button type="submit" class ="btn light-green lighten-1" formaction="/users/login">Log In</button>
-          <button type="submit" class ="btn light-green lighten-1" formaction="/users/register">Register</button>
+            <div class="input-field">
+              <label for="username">Username:</label>
+              <input type="text" name="username" required>
+            </div>
+            <div class="input-field">
+              <label for="password">Password:</label>
+              <input type="password" name="password" required>
+            </div>
+              <button type="submit" class ="btn light-green lighten-1" formaction="/users/login">Log In</button>
+              <button type="submit" class ="btn light-green lighten-1" formaction="/users/register">Register</button>
         </form>
         </main>
       </div>

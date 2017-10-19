@@ -22,11 +22,11 @@ Middleware:
 
 Database:
 * PostgreSQL
-* **[Knex Link](http://knexjs.org/)** - used as SQL query builder
+* **[Knex](http://knexjs.org/)** - used as SQL query builder
 
 Additional:
-* **[Heroku Link](http://www.heroku.com)** - used for deployment
-* **[Cloudinary Link](https://cloudinary.com/)** - for image uplaod and storage
+* **[Heroku](http://www.heroku.com)** - used for deployment
+* **[Cloudinary](https://cloudinary.com/)** - for image uplaod and storage
 * Materialize
 
 <hr>
