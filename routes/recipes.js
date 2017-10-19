@@ -9,14 +9,12 @@ router.get('/new', (req, res, next) => {
   res.render('recipes/new');
 })
 
-//POST '/recipes' (can do either recipe format!)
+//POST '/recipes'
 router.post('/', (req, res, next) => {
-  //console.log(req.session.user);
-  console.log(req.body);
+
   let recipeName = req.body.name;
   let ingredients = [];
 
-  //MAKE A FOR EACH FOR INGREDIENTS INTO ARRAY OF OBJECTS
   for (let i = 0; i < req.body.ingredient.length; i++) {
     let ingredient = {};
     ingredient.ingredient = req.body.ingredient[i];
@@ -55,13 +53,10 @@ router.post('/', (req, res, next) => {
   .then(recipe => {
     console.log(recipe);
     res.send('send new recipe in');
-  })
-
+  }).catch( (err) => {
+     next(err);
+   });
 })
-//.catch( (err) => {
-//   next(err);
-// });
-
 
 // GET recipes/:recipeId/upvote
 router.get('/:recipeId/upvote', (req, res, next) => {
@@ -111,7 +106,6 @@ router.get('/:id', (req, res, next) => {
     .first();
   })
   .then(user => {
-    console.log('Recipe user:', user);
     res.render('recipes/show', {recipe:recipe, user:user});
   }).catch( (err) => {
      next(err);

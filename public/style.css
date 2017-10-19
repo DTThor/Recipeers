@@ -26,6 +26,10 @@ footer a {
   color: #757575;
 }
 
+.brand-logo {
+  margin-left: 20px;
+}
+
 .signin {
   margin-top: 20px;
 }
