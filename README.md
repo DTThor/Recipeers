@@ -32,7 +32,6 @@ Additional:
 ### Challenges:
 
 * Routes
-
 * Joins - Determining how to create the diiferent joins using knex. Translating working SQL queries to knex.  
 
 * Cloudinary 
@@ -53,6 +52,7 @@ Additional:
  <br>
  img
  <br>
+ 
 * Create a profile.
 * Live happily ever after!
 <br><br><br><br>
