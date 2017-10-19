@@ -57,34 +57,40 @@ Additional:
 * Upload awesome profile pic.
 * Log in.
 
-<br><br>
-
+<br>
 
  ##  2. Add your own recipe
-<br>
-<br>
-img
-<br>
-* Do something
-<br><br><br><br>
 
+<br>
+
+img
+
+* Click on plus icon
+* Fill out ingredients and upload pic of dish.
+
+<br>
 
 ##  3. Browse recipes 
 
-<br><br>
-img
 <br>
-* do something
-<br><br><br><br>
+
+img
+
+* Do something
+
+<br>
 
 
 ##  4. See your friends recipes
 
-<br><br>
+<br>
+
 img
-<br>
-* Stalk recipes
+
+* Click on following or followers to see freinds recipes
+* Pick one and try it, YOLO!
+
 <br>
 
 
-<strong>*Discover your inner chef. Become a Recipeer!.*</strong>
+# *Discover your inner chef. Become a Recipeer!*
