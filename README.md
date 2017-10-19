@@ -46,7 +46,7 @@ Additional:
 
 # Recipeers Walkthrough:
 
-<br>
+
 
 ## 1. Create a profile
 <br>
