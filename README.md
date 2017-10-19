@@ -1,6 +1,6 @@
 # Hello Recipeers!
 
-![The Zubair](http://res.cloudinary.com/dcc5vb7ot/image/upload/v1508426838/simmerdown_k46vcq.jpg)
+![from zapier](https://cdn.zapier.com/storage/blog/1493b5cec9773fe7017b5980f40b8fa8.1800x1000.jpg)
 
 **Recipeers is a social media app for sharing and discovering new recipes by [Amanda Freeman](https://github.com/mandafae),  [Dylan Thorwaldson](https://github.com/DTThor), and [Michael Quiroz](https://github.com/cocomjolk), [Rachel Cavin](https://github.com/Rmcavin) built in a week for Galvanize g63 cohort qtr 2 project.**
 
