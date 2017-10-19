@@ -46,12 +46,6 @@ const isLoggedIn = (req,res,next) => {
   }
 }
 
-// logging out
-app.get('/logout', (req, res) => {
-  req.session = null;
-  res.redirect('/')
-})
-
 // check if user is logged in for every route
 app.use(isLoggedIn)
 
