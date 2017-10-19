@@ -22,4 +22,10 @@ router.get('/', (req, res, next) => {
   })
 });
 
+// logging out
+router.get('/logout', (req, res) => {
+  req.session = null;
+  res.redirect('/')
+})
+
 module.exports = router;
