@@ -15,6 +15,8 @@ Server:
 Middleware:
 * body-parser
 * method override
+* cookie session
+* cookie parser
 
 Database:
 * PostgreSQL
@@ -26,20 +28,20 @@ Additional:
 * Materialize
 
 <hr>
-
 ### Challenges:
 
 * Routes
 
-* Joins
+* Joins - Determining how to create the diiferent joins using knex. Translating working SQL queries to knex.  
 
-* Cloudinary
+* Cloudinary 
 
-* **Git feature branch workflow**
+* Git feature branch workflow**
 
 * We wanted to be the next instagram for recipes!!
 <hr>
 
+<br>
 # Recipeers Walkthrough:
 <br>
 
@@ -78,10 +80,6 @@ img
 <br>
 * Stalk recipes
 <br>
-<br>
 
-<br>
-
-<br>
 
 <strong>*Discover your inner chef. Become a Recipeer!.*</strong>
