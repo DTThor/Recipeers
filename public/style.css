@@ -4,7 +4,7 @@ html {
   min-height: 100%;
 }
 body {
-  margin: 0 0 120px;
+  margin: 0 0 95px;
 }
 
 main {
@@ -16,14 +16,18 @@ main {
 
 footer {
   position: absolute;
-  height: 100px;
+  height: 75px;
   left: 0;
   bottom: 0;
   width: 100%;
 }
 
 footer a {
-  color: lightgrey;
+  color: #757575;
+}
+
+.signin {
+  margin-top: 20px;
 }
 
 .mediumScreen {
