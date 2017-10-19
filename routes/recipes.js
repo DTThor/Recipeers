@@ -9,14 +9,12 @@ router.get('/new', (req, res, next) => {
   res.render('recipes/new');
 })
 
-//POST '/recipes' (can do either recipe format!)
+//POST '/recipes'
 router.post('/', (req, res, next) => {
-  //console.log(req.session.user);
-  console.log(req.body);
+
   let recipeName = req.body.name;
   let ingredients = [];
 
-  //MAKE A FOR EACH FOR INGREDIENTS INTO ARRAY OF OBJECTS
   for (let i = 0; i < req.body.ingredient.length; i++) {
     let ingredient = {};
     ingredient.ingredient = req.body.ingredient[i];
@@ -24,7 +22,6 @@ router.post('/', (req, res, next) => {
     ingredient.quantity = parseInt(req.body.quantity[i]);
     ingredients.push(ingredient);
   }
-  console.log(ingredients);
   let recipeInstructions = req.body.instructions;
   let isVegan = false;
   let isVegetarian = false;
@@ -61,10 +58,6 @@ router.post('/', (req, res, next) => {
   })
 
 })
-//.catch( (err) => {
-//   next(err);
-// });
-
 
 // GET recipes/:recipeId/upvote
 router.get('/:recipeId/upvote', (req, res, next) => {
@@ -100,21 +93,24 @@ router.get('/:recipeId/addFavorite', (req, res, next) => {
   }
 })
 
-//GET /recipe/recipename
+//GET /recipe/:id
 router.get('/:id', (req, res, next) => {
+  let recipe = null;
   knex('recipes')
   .where({id: req.params.id})
   .first()
-  .then(recipe => {
-    let recipeUser = recipe.user_id;
-    knex('users')
+  .then(fetchedRecipe => {
+    recipe = fetchedRecipe;
+    let recipeUser = fetchedRecipe.user_id;
+     return knex('users')
     .where({id: recipeUser})
-    .then(user => {
-      res.render('recipes/show', {recipe:recipe, user:user});
-    }).catch( (err) => {
-       next(err);
-     });
+    .first();
   })
-})
+  .then(user => {
+    res.render('recipes/show', {recipe:recipe, user:user});
+  }).catch( (err) => {
+     next(err);
+   });
+});
 
 module.exports = router;
