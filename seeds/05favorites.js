@@ -15,7 +15,7 @@ exports.seed = function(knex, Promise) {
         {user_id: 4, favorite_recipe_id: 1 },
         {user_id: 5, favorite_recipe_id: 2 },
         {user_id: 6, favorite_recipe_id: 1 },
-        {user_id: 6, favorite_recipe_id: 8},
+        {user_id: 6, favorite_recipe_id: 8 },
         {user_id: 6, favorite_recipe_id: 5 },
         {user_id: 7, favorite_recipe_id: 4 },
         {user_id: 7, favorite_recipe_id: 2 },
