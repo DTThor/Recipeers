@@ -49,7 +49,7 @@ const isLoggedIn = (req,res,next) => {
 // logging out
 app.get('/logout', (req, res) => {
   req.session = null;
-  res.redirect('/')
+  res.redirect('/index')
 })
 
 // check if user is logged in for every route
@@ -64,7 +64,7 @@ const recipes = require('./routes/recipes');
 const users = require('./routes/users');
 app.use('/recipes', recipes);
 app.use('/users', users);
-app.use('/', index);
+app.use('/index', index);
 
 //port listening
 app.listen(PORT, ()=>{
