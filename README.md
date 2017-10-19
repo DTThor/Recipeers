@@ -46,19 +46,19 @@ Additional:
 
 # Recipeers Walkthrough:
 
+<br>
 
-
-## 1. Create a profile
-<br>
-<br>
-img
-<br>
+ ## 1. Create a profile
+ 
+ <br>
+ img
+ <br>
 * Create a profile.
 * Live happily ever after!
 <br><br><br><br>
 
 
-##  2. Add your own recipe
+ ##  2. Add your own recipe
 <br>
 <br>
 img
