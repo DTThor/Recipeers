@@ -26,7 +26,11 @@
        <a href="#" data-activates="mobile-demo" class="button-collapse right"><i class="material-icons">menu</i></a>
        <ul class="hide-on-med-and-down right">
          <li><a href="/recipes/new"><i class="right small material-icons">control_point</i></a></li>
+         <% if (!currentUser) { %>
          <li><a href="#"><div class = 'right avatarContainer'><a href="/users/signin"><i class="material-icons">account_circle</i></a></div></a></li>
+         <% } else { %>
+          <li><a href="#"><div class = 'right avatarContainer'><a href="/users/<%=currentUser.username%>"><img class='profilePicture' src="<%=currentUser.profile_pic_url%>" alt="User Profile Picture" style="width:50px;height:50px;margin-top:7px;margin-bottom:7px;"></a></div></a></li>
+          <% } %>
        </ul>
        <ul class="side-nav" id="mobile-demo">
          <li><a href="/recipes/new"><i class="right small material-icons">control_point</i></a></li>
