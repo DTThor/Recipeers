@@ -1,16 +1,15 @@
 <%- include('../partials/header') %>
 
-<main>
-
   <div class = 'container bigger'>
     <div class= 'row bigger'>
       <div class=".mediumScreen">
         <main class = 'card bigger'>
-          <form class = "newRecipe" method="POST" action="/recipes/">
+          <form class = "newRecipe" method="POST" action="/recipes">
             <label for="name" required>Recipe Name:</label>
             <input type="text" name="name">
 
               <div>Ingredients</div>
+
               <label for="quantity">Quantity</label>
               <input type="text" name="quantity" required>
               <label for="uom">Unit of Measure</label>
@@ -28,6 +27,26 @@
               </div>
               <label for="ingredient">ingredient</label>
               <input type="text" name="ingredient" required>
+
+              <label for="quantity">Quantity</label>
+              <input type="text" name="quantity" required>
+              <label for="uom">Unit of Measure</label>
+              <div class = "input-field">
+                <select name="uom" required>
+                  <option value="whole">whole</option>
+                  <option value="clove">clove</option>
+                  <option value="pinch">pinch</option>
+                  <option value="teaspoon">teaspoon</option>
+                  <option value="tablespoon">tablespoon</option>
+                  <option value="cups">cups</option>
+                  <option value="ounces">ounce</option>
+                  <option value="pounds">pounds</option>
+                </select>
+              </div>
+              <label for="ingredient">ingredient</label>
+              <input type="text" name="ingredient" required>
+
+
               <label for="instructions">instructions</label>
               <div class = "input-field">
                 <textarea class="materialize-textarea" name="instructions" required></textarea>
@@ -35,7 +54,7 @@
               <label for="dietary">Dietary Restrictions</label>
               <div class = "input-field">
                 <select name="dietary" required multiple>
-                  <option value="none">none</option>
+                  <option value="none" selected="selected">none</option>
                   <option value="gluten_free">gluten free</option>
                   <option value="dairy_free">dairy free</option>
                   <option value="vegetarian">vegetarian</option>
@@ -45,12 +64,11 @@
               </div>
               <label for="total_time">Total Time</label>
               <input type="text" name="total_time" required>
-            <button type="submit" class ="btn light-green lighten-1">Save Edits</button>
+            <input type="submit" class ="btn light-green lighten-1">
           </form>
         </main>
       </div>
     </div>
   </div>
-</main>
 
   <%- include('../partials/footer') %>
