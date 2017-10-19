@@ -68,6 +68,8 @@
 
               <img id="thumbnail" src="" alt="">
 
+              <input type="text" id="pic" name="recipe_pic_url" value="" display="none">
+
               <a href="#" id="upload_widget_opener"><i class="material-icons">add_to_photos</i>Photo of Recipe</a>
             <input id="submit-button" type="submit" class ="btn light-green lighten-1">
           </form>
@@ -86,17 +88,12 @@
                 function(error, result) {
                   console.log(error, result)
                   //set photo chosen as thumbnail
-                  $('#thumbnail').attr('src', result[0].url);
+                  $('#thumbnail').attr('src', result[0].url).attr('width', '100px');
                   //click and complete widget upload, then enable submit
                   //grab submit button and add onclick to it
                   //fire the ajax request
                   $('#submit-button').prop('disabled', false).click(()=>{
-                    //fires a post to recipes/new route
-                    $.ajax({
-                      method: 'POST',
-                      url: 'recipes/new',
-                      data: {recipe_pic_url: result[0].url}
-                    }).done(results => console.log(results) );
+                    $('#pic').attr('value', result[0].url);
                   });
                 }, false);
                   });
