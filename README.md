@@ -2,6 +2,8 @@
 
 ![from zapier](https://cdn.zapier.com/storage/blog/1493b5cec9773fe7017b5980f40b8fa8.1800x1000.jpg)
 
+<br>
+
 **-Recipeers is a social media app for discovering and sharing recipes.** by [Amanda Freeman](https://github.com/mandafae),  [Dylan Thorwaldson](https://github.com/DTThor), and [Michael Quiroz](https://github.com/cocomjolk), [Rachel Cavin](https://github.com/Rmcavin) built in a week for Galvanize g63 cohort qtr 2 project.
 
 **-Our goal** is to create a platform for users find, share and try new and interesting recipes. 
@@ -34,7 +36,7 @@ Additional:
 * Routes
 * Joins - Determining how to create the diiferent joins using knex. Translating working SQL queries to knex.
 
-* Cloudinary 
+* Cloudinary
 
 * Git feature branch workflow**
 
@@ -48,43 +50,49 @@ Additional:
 <br>
 
  ## 1. Create a profile
- 
+
  <br>
- 
+
  img
- 
+
 * Enter in your credentials.
 * Upload awesome profile pic.
 * Log in.
 
-<br><br>
-
+<br>
 
  ##  2. Add your own recipe
+
 <br>
-<br>
+
 img
+
+* Click on plus icon
+* Fill out ingredients and upload pic of dish.
+
 <br>
+
+##  3. Browse recipes
+
+<br>
+
+img
+
 * Do something
-<br><br><br><br>
 
-
-##  3. Browse recipes 
-
-<br><br>
-img
 <br>
-* do something
-<br><br><br><br>
 
 
 ##  4. See your friends recipes
 
-<br><br>
+<br>
+
 img
-<br>
-* Stalk recipes
+
+* Click on following or followers to see freinds recipes
+* Pick one and try it, YOLO!
+
 <br>
 
 
-<strong>*Discover your inner chef. Become a Recipeer!.*</strong>
+# *Discover your inner chef. Become a Recipeer!*
