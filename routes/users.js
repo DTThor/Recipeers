@@ -83,6 +83,7 @@ router.get('/:username/edit', (req, res, next) => {
   })
 })
 
+//Update pic route
 router.patch('/:username/updatePic', (req, res, next) => {
   if(!req.body.profile_pic_url){
     return;
@@ -197,16 +198,20 @@ router.get('/:username/followers', (req, res, next) => {
   })
  })
 
-
-  //  knex('recipes')
-  //  .where({name: req.params.name})
-  //  .first()
-  //  .then(user => {
-  //    knex('users')
-  //    .where( 'following.following_user_id', user.id)
-  //    .innerJoin('recipes','users.id','recipes.user_id')
-  //    .then(followers => {
-  //      res.render('users/', {user:user, followers:followers});
+//GET 'users/<username>/addFollowing'
+router.get('/:username/addFollowing', (req, res, next) => {
+  knex('users')
+  .where({username: req.params.username})
+  .first()
+  .then(user => {
+    knex('following')
+    .returning('*')
+    .insert({user_id:req.session.user.id, following_user_id: user.id})
+    .then(following => {
+      res.redirect(`/users/${req.params.username}`)
+    })
+  })
+})
 
 
 //search users
