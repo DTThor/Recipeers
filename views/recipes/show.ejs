@@ -1,6 +1,5 @@
 <%- include('../partials/header') %>
 
-
   <div class = 'container bigger'>
     <div class= 'row bigger'>
       <div class=".mediumScreen">
@@ -8,11 +7,10 @@
           <% console.log(user) %>
           <div class= "flexName">
             <h4> <%=recipe.name%> </h4>
-            <h5>
-              <a href="/users/<%=user.id%>"></a> <%=user.username%> </h5></div>
+            <h7> <a href="/users/<%=user.username%>"> <%=user.username%> </a> </h7>
+          </div>
 
           <div class = "aboutHalf bigger flexIngred">
-            <% console.log(recipe) %>
             <h6><b>Ingredients</b></h6>
             <ul>
               <% recipe.ingredients.forEach((ingredient) =>{  %>
@@ -24,7 +22,25 @@
           <div class = "aboutHalf bigger flexImgBox">
             <img class = "recipeImg" src="http://images.media-allrecipes.com/userphotos/250x250/3570996.jpg" alt="Recipe">
             <div> <%= recipe.upvotes %> Upvotes</div>
-            <div></div>
+            <div>
+              <span>
+                <% if (recipe.vegan) { %>
+                  <span>Vegan</span>
+                <%}%>
+                <% if (recipe.vegetarian) {%>
+                  <span>Vegetarian</span>
+                <%}%>
+                <% if (recipe.pescatarian) {%>
+                  <span>Pescatarian</span>
+                <%}%>
+                <% if (recipe.gluten_free) {%>
+                  <span>Gluten Free</span>
+                <%}%>
+                <% if (recipe.dairy_free) {%>
+                  <span>Dairy Free</span>
+                <%}%>
+              </span>
+            </div>
           </div>
 
           <div class = "aboutHalf bigger flexInstr">
@@ -38,8 +54,3 @@
   </div>
 
 <%- include('../partials/footer') %>
-
-<!--
-<% //JSON.parse(recipe.ingredients).forEach((ingredient) =>{  %>
-  <% //console.log(ingredient); %>
-<% //}) %> -->

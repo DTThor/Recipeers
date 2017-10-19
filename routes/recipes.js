@@ -24,7 +24,6 @@ router.post('/', (req, res, next) => {
     ingredient.quantity = parseInt(req.body.quantity[i]);
     ingredients.push(ingredient);
   }
-  console.log(ingredients);
   let recipeInstructions = req.body.instructions;
   let isVegan = false;
   let isVegetarian = false;
@@ -82,21 +81,25 @@ router.get('/:recipeId/upvote', (req, res, next) => {
   }
 })
 
-//GET /recipe/recipename
+//GET /recipe/id
 router.get('/:id', (req, res, next) => {
+  let recipe = null;
   knex('recipes')
   .where({id: req.params.id})
   .first()
-  .then(recipe => {
-    let recipeUser = recipe.user_id;
-    knex('users')
+  .then(fetchedRecipe => {
+    recipe = fetchedRecipe;
+    let recipeUser = fetchedRecipe.user_id;
+     return knex('users')
     .where({id: recipeUser})
-    .then(user => {
-      res.render('recipes/show', {recipe:recipe, user:user});
-    }).catch( (err) => {
-       next(err);
-     });
+    .first();
   })
-})
+  .then(user => {
+    console.log('Recipe user:', user);
+    res.render('recipes/show', {recipe:recipe, user:user});
+  }).catch( (err) => {
+     next(err);
+   });
+});
 
 module.exports = router;

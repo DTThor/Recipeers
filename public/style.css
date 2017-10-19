@@ -90,7 +90,8 @@ footer a {
 
 
 .recipeImg {
-  display: inline;
+  display: block;
+  margin: auto;
 }
 
 .aboutHalf {
@@ -123,6 +124,7 @@ footer a {
 
 .flexImgBox {
   flex: 1 1 40%;
+  text-align: center;
 }
 
 .flexInstr {
