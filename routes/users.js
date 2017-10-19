@@ -195,6 +195,19 @@ router.get('/:username/followers', (req, res, next) => {
   })
  })
 
+
+
+  //  knex('recipes')
+  //  .where({name: req.params.name})
+  //  .first()
+  //  .then(user => {
+  //    knex('users')
+  //    .where( 'following.following_user_id', user.id)
+  //    .innerJoin('recipes','users.id','recipes.user_id')
+  //    .then(followers => {
+  //      res.render('users/', {user:user, followers:followers});
+
+
 //search users
 router.get('/search', (req, res, next) => {
   //check if the username is in db

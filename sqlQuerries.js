@@ -38,6 +38,12 @@ FROM following
 INNER JOIN users
 ON following.user_id = users.id
 WHERE following_user_id = 2;
+//FOLLOWERS
+SELECT user_id, username
+FROM users
+INNER JOIN following
+ON following.user_id = users.id
+WHERE following_user_id = 2;
 //shows all users following taco user_id:5
 
 //FAVORITE RECIPES FOR USER:2
@@ -48,6 +54,12 @@ ON recipes.id = favorites.favorite_recipe_id
 WHERE favorites.user_id = 2;
 //returns favorite recipe name and upvotes
 
+//Profile pic to recipe
+SELECT users.name, recipes.name, profile_pic_url
+FROM recipes
+INNER JOIN users
+ON recipes.user_id = users.id
+WHERE recipes.id = 2;
 
 ******RECIPE PAGE QUERIES******
 
