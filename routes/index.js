@@ -13,13 +13,22 @@ cloudinary.config({
 
 //home page route
 router.get('/', (req, res, next) => {
-  knex('recipes')
-  .orderBy('upvotes', 'desc')
-  .then(recipes => {
-    res.render('index.ejs', {recipes});
-  }).catch(err => {
-    next(err);
-  })
+  console.log(req.session);
+  if (req.session.user) {
+    knex('users')
+    .where(id:)
+  }
+
+  else {
+    knex('recipes')
+    .orderBy('upvotes', 'desc')
+    .then(recipes => {
+      res.render('index.ejs', {recipes});
+    }).catch(err => {
+      next(err);
+    })
+  }
+
 });
 
 // logging out
