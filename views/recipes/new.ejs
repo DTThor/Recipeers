@@ -6,7 +6,7 @@
     <div class= 'row bigger'>
       <div class=".mediumScreen">
         <main class = 'card bigger'>
-          <form class = "newRecipe" method="POST" action="">
+          <form class = "newRecipe" method="POST" action="/recipes/">
             <label for="name" required>Recipe Name:</label>
             <input type="text" name="name">
 
@@ -44,7 +44,7 @@
                 </select>
               </div>
               <label for="total_time">Total Time</label>
-              <input type="text" name="total_time">
+              <input type="text" name="total_time" required>
             <button type="submit" class ="btn light-green lighten-1">Save Edits</button>
           </form>
         </main>
