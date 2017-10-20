@@ -53,7 +53,7 @@ Additional:
 
  <br>
 
- ![create profile](Recipeers/food pics/createProfile.png)
+ ![create profile](/createProfile.png)
 
 * Enter in your credentials.
 * Upload awesome profile pic.
