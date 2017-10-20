@@ -14,8 +14,6 @@
             </div>
             <div class = 'col s6'>
               <h5><a href="/recipes/<%=recipe.recipeID%>" class="black-text"><%= recipe.recipe_name %></a></h5> <br>
-              <a href="/recipes/<%= recipe.recipeID %>/addFavorite"><i class="material-icons black-text" id="favorite">favorite</i></a>
-              <a href="/recipes/<%= recipe.recipeID %>/upvote"><i class="material-icons black-text" id="upvote">thumb_up</i></a>
             </div>
             <div class = 'col s4 valign'>
              <img src="<%= recipe.recipe_pic_url %>" alt="Recipe Photo" class="right" style="height:75px;margin-right:10px;">
@@ -33,14 +31,26 @@
             </div>
             <div class = 'col s6'>
               <h5><a href="/recipes/<%=post.id%>" class="black-text"><%= post.name %></a></h5> <br>
-              <a href="/recipes/<%= post.id %>/addFavorite"><i class="material-icons black-text" id="favorite">favorite</i></a>
-              <a href="/recipes/<%= post.id %>/upvote"><i class="material-icons black-text" id="upvote">thumb_up</i></a>
+              <a href="#"><i class="material-icons black-text" id="favorite">favorite</i></a>
+              <a href="#"><i class="material-icons black-text" id="upvote">thumb_up</i></a>
             </div>
             <div class = 'col s4 valign'>
              <img src="<%= post.recipe_pic_url %>" alt="Recipe Photo" class="right" style="height:75px;margin-right:10px;">
             </div>
           </div>
         </div>
+        <script type="text/javascript">
+          $('#favorite').on('click', ()=>{
+            $.get('/recipes/<%= post.id %>/addFavorite').done(msg => {
+              $('#favorite').removeClass("black-text").addClass("red-text")
+            })
+          })
+
+          $('#upvote').on('click', ()=> {
+            $.get('/recipes/<%= post.id %>/upvote').done(data => { $('#upvote').removeClass("black-text").addClass("light-green-text")
+            })
+          })
+        </script>
       <% }) %>
     <% } %>
 

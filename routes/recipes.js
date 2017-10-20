@@ -77,7 +77,7 @@ router.get('/:recipeId/upvote', (req, res, next) => {
     .first()
     .update({upvotes: knex.raw('upvotes + 1')})
     .then(recipe => {
-      res.redirect('/')
+      res.send(recipe)
     }).catch( (err) => {
        next(err);
      });
@@ -85,7 +85,7 @@ router.get('/:recipeId/upvote', (req, res, next) => {
     res.redirect('/users/signin')
   }
 })
-
+// $.get('/:recipeId/addFavorite').done(msg => {})
 // GET /recipes/:recipeId/addFavorite
 router.get('/:recipeId/addFavorite', (req, res, next) => {
   if(req.session.user) {
@@ -93,7 +93,7 @@ router.get('/:recipeId/addFavorite', (req, res, next) => {
     .returning('*')
     .insert({user_id: req.session.user.id, favorite_recipe_id: req.params.recipeId})
     .then(recipe => {
-      res.redirect('/')
+      res.send(recipe)
     }).catch( (err) => {
        next(err);
      });

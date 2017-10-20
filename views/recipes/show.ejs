@@ -21,7 +21,7 @@
 
           <div class = "aboutHalf bigger flexImgBox">
             <img class = "recipeImg responsive-img" src="<%=recipe.recipe_pic_url%>" alt="Recipe" style="height:200px;">
-            <div> <%= recipe.upvotes %> Upvotes</div>
+            <div><span id="upvoteNumber"> <%= recipe.upvotes %> </span> Upvotes</div>
             <div>
               <span>
                 <% if (recipe.vegan) { %>
@@ -41,6 +41,10 @@
                 <%}%>
               </span>
             </div>
+            <div>
+              <a href="#"><i class="material-icons black-text" id="favorite">favorite</i></a>
+              <a href="#"><i class="material-icons black-text" id="upvote">thumb_up</i></a>
+            </div>
           </div>
 
           <div class = "aboutHalf bigger flexInstr">
@@ -52,5 +56,19 @@
       </div>
     </div>
   </div>
+
+  <script type="text/javascript">
+    $('#favorite').on('click', ()=>{
+      $.get('/recipes/<%= recipe.id %>/addFavorite').done(msg => {
+        $('#favorite').removeClass("black-text").addClass("red-text")
+      })
+    })
+
+    $('#upvote').on('click', ()=> {
+      $.get('/recipes/<%= recipe.id %>/upvote').done(data => { $('#upvote').removeClass("black-text").addClass("light-green-text")
+      $('#upvoteNumber').text(data[0].upvotes)
+      })
+    })
+  </script>
 
 <%- include('../partials/footer') %>
