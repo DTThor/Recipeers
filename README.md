@@ -6,7 +6,9 @@
 
 **-Recipeers is a social media app for discovering and sharing recipes.** by [Amanda Freeman](https://github.com/mandafae),  [Dylan Thorwaldson](https://github.com/DTThor), and [Michael Quiroz](https://github.com/cocomjolk), [Rachel Cavin](https://github.com/Rmcavin) built in a week for Galvanize g63 cohort qtr 2 project.
 
-**-Our goal** is to create a platform for users find, share and try new and interesting recipes. 
+**-Our goal** is to create a platform for users to interact effortlessly to find, share and try new and interesting recipes with friends and followers. 
+
+Food is a common and popular topic on social media but existing options don't fcilitate easy recipe sharing.
 
 ## Technologies:
 
@@ -79,9 +81,7 @@ Additional:
 <br>
 
 ![create profile](http://res.cloudinary.com/dcc5vb7ot/image/upload/v1508521264/browse_n0ry3p.png)
-
-
-* Do something
+![create profile](http://res.cloudinary.com/dcc5vb7ot/image/upload/v1508522858/recipe1_aghyfq.png)
 
 <br>
 
@@ -91,6 +91,7 @@ Additional:
 <br>
 
 ![create profile](http://res.cloudinary.com/dcc5vb7ot/image/upload/v1508521259/homepage_jfjfmw.png)
+![create profile](http://res.cloudinary.com/dcc5vb7ot/image/upload/v1508522859/recipe2_yq07ys.png)
 
 <br>
 
