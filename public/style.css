@@ -28,6 +28,11 @@ footer a {
 
 .brand-logo {
   margin-left: 20px;
+  font-family: 'Lily Script One', cursive;
+}
+
+.brand-logo em {
+  color: #1565c0;
 }
 
 .signin {
