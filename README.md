@@ -78,7 +78,8 @@ Additional:
 
 <br>
 
-img
+![create profile](http://res.cloudinary.com/dcc5vb7ot/image/upload/v1508521264/browse_n0ry3p.png)
+
 
 * Do something
 
@@ -89,10 +90,7 @@ img
 
 <br>
 
-img
-
-* Click on following or followers to see freinds recipes
-* Pick one and try it, YOLO!
+![create profile](http://res.cloudinary.com/dcc5vb7ot/image/upload/v1508521259/homepage_jfjfmw.png)
 
 <br>
 
