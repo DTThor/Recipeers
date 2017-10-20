@@ -57,13 +57,12 @@ Additional:
  ![create profile](http://res.cloudinary.com/dcc5vb7ot/image/upload/v1508518616/createProfile_hakybt.png)
  <br>
  <br>
- ![create profile](http://res.cloudinary.com/dcc5vb7ot/image/upload/v1508517340/createUsername2_el0nge.png)
+ ![create profile](http://res.cloudinary.com/dcc5vb7ot/image/upload/v1508518592/createUsername2_l9mkzg.png)
  <br>
  <br>
- ![create profile](http://res.cloudinary.com/dcc5vb7ot/image/upload/v1508517340/filloutForm2_s2epda.png)
+ ![create profile](http://res.cloudinary.com/dcc5vb7ot/image/upload/v1508518582/filloutForm2_tc1xh9.png)
  <br><br>
- ![create profile](http://res.cloudinary.com/dcc5vb7ot/image/upload/v1508517621/profilePic_l91gi1.png)
-
+ ![create profile](http://res.cloudinary.com/dcc5vb7ot/image/upload/v1508518574/profilePic_f4zdui.png)
 
 <br>
 
