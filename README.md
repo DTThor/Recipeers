@@ -53,7 +53,7 @@ Additional:
 
  <br>
 
- ![create profile](/createProfile.png)
+ ![create profile](/food pics/createProfile.png)
 
 * Enter in your credentials.
 * Upload awesome profile pic.
