@@ -36,11 +36,17 @@ Additional:
 ### Challenges:
 
 * Routes
-* Joins - Determining how to create the diiferent joins using knex. Translating working SQL queries to knex.
+* Joins - Determining how to create complex joins using knex. Translating working SQL queries to knex.
 
-* Cloudinary
+* Cloudinary - picture storage and display, upload widget
 
 * Git feature branch workflow**
+
+* Authorization and Authentication
+
+* Data not being passed around correctly between files, JSONB data storage
+
+* Consistent image sizing and styling
 
 * We wanted to be the next instagram for recipes!!
 <hr>
