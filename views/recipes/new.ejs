@@ -74,9 +74,8 @@
                 theme: 'minimal',
                 multiple: false,
                 cropping: 'server',
-                stylesheet: 'http://recipeers.herokuapp.com/style.css'},
+              },
                 function(error, result) {
-                  console.log(error, result)
                   //set photo chosen as thumbnail
                   $('#thumbnail').attr('src', result[0].url).attr('width', '100px');
                   //click and complete widget upload, then enable submit
@@ -91,7 +90,6 @@
                   function addInput(event) {
                     event.preventDefault();
                     let htmlText = '<label for="quantity">Quantity</label><input type="text" name="quantity" required><label for="uom">Unit of Measure</label><div class = "input-field"><select name="uom" required><option value="whole">whole</option><option value="clove">clove</option><option value="pinch">pinch</option><option value="teaspoon">teaspoon</option><option value="tablespoon">tablespoon</option><option value="cups">cups</option><option value="ounces">ounce</option><option value="pounds">pounds</option></select></div><label for="ingredient">ingredient</label><input type="text" name="ingredient" required>';
-                    console.log('hello');
                     let oneIng = document.createElement('div');
                     oneIng.innerHTML = htmlText;
                     document.getElementById('newIng').appendChild(oneIng);

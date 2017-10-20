@@ -53,13 +53,10 @@ Additional:
 
  <br>
 
-
  ![create profile](http://res.cloudinary.com/dcc5vb7ot/image/upload/v1508518616/createProfile_hakybt.png)
- <br>
- <br>
+ <br><br>
  ![create profile](http://res.cloudinary.com/dcc5vb7ot/image/upload/v1508518592/createUsername2_l9mkzg.png)
- <br>
- <br>
+ <br><br>
  ![create profile](http://res.cloudinary.com/dcc5vb7ot/image/upload/v1508518582/filloutForm2_tc1xh9.png)
  <br><br>
  ![create profile](http://res.cloudinary.com/dcc5vb7ot/image/upload/v1508518574/profilePic_f4zdui.png)
@@ -70,10 +67,10 @@ Additional:
 
 <br>
 
-img
+![create profile](http://res.cloudinary.com/dcc5vb7ot/image/upload/v1508519496/Snip20171020_2_uwxhgs.png)
+<br><br>
+![create profile](http://res.cloudinary.com/dcc5vb7ot/image/upload/v1508519499/Snip20171020_4_zcll6c.png)
 
-* Click on plus icon
-* Fill out ingredients and upload pic of dish.
 
 <br>
 
@@ -81,7 +78,8 @@ img
 
 <br>
 
-img
+![create profile](http://res.cloudinary.com/dcc5vb7ot/image/upload/v1508521264/browse_n0ry3p.png)
+
 
 * Do something
 
@@ -92,10 +90,7 @@ img
 
 <br>
 
-img
-
-* Click on following or followers to see freinds recipes
-* Pick one and try it, YOLO!
+![create profile](http://res.cloudinary.com/dcc5vb7ot/image/upload/v1508521259/homepage_jfjfmw.png)
 
 <br>
 

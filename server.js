@@ -37,6 +37,7 @@ app.use(session({
 // middleware
 const isLoggedIn = (req,res,next) => {
   let user = req.session.user;
+  console.log('sessions user:',user);
   if (user) {
     res.locals.currentUser = user; // make currentUser available to all of our views
     next();
