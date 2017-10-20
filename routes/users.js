@@ -83,33 +83,15 @@ router.get('/:username/edit', (req, res, next) => {
   })
 })
 
-//Update pic route
-router.patch('/:username/updatePic', (req, res, next) => {
-  if(!req.body.profile_pic_url){
-    return;
-  }
-  knex('users')
-  .returning('*')
-  .where({username: req.params.username})
-  .first()
-  .update({profile_pic_url: req.body.profile_pic_url})
-  .then(user => {
-    let profileURL = '/users/' + req.body.username;
-    res.redirect(profileURL)
-  }).catch( (err) => {
-  next(err);
-  })
-})
-
-
 //PATCH '/users/<username>' - edit the user profile information
 router.patch('/:username', (req, res, next) => {
   knex('users')
-  .returning('*')
   .where({username: req.body.username})
   .first()
   .update(req.body)
+  .returning('*')
   .then(user => {
+    req.session.user = user[0];
     let profileURL = '/users/' + req.body.username;
     res.redirect(profileURL)
   }).catch( (err) => {
@@ -223,7 +205,6 @@ router.get('/:username/deleteFollowing', (req, res, next) => {
   .where({username: req.params.username})
   .first()
   .then(user => {
-    console.log(user)
     knex('following')
     .where({user_id:req.session.user.id})
     .andWhere({following_user_id:user.id})

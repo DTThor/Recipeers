@@ -29,9 +29,11 @@
               value="<%= user.location %>"
             <% } %>
             >
+            <input type="hidden" required name="profile_pic_url" id="profilePic">
             <a href="#" id="upload_widget_opener"><i class="material-icons">add_to_photos</i>Set Profile Picture</a>
             <button type="submit" formaction="/users/<%= user.username %>?_method=PATCH" class ="btn light-green lighten-1">Save Edits</button>
             <button type="submit" formaction="/users/<%= user.username %>?_method=DELETE" class="btn red">Delete Account</button>
+
           </form>
         </main>
       </div>
@@ -41,16 +43,10 @@
   document.getElementById("upload_widget_opener").addEventListener("click", function() {
     cloudinary.openUploadWidget({ cloud_name: 'dcc5vb7ot', upload_preset: 'ft2wpaew', multiple: false, theme: 'minimal', cropping: 'server', stylesheet: '#cloudinary-overlay { background-color: orange; }'},
     function(error, result) {
-      console.log(error, result)
-      $.ajax({
-        method: 'POST',
-        url: 'updatePic?_method=PATCH',
-        data: {profile_pic_url: result[0].url}
-      }).done(results => console.log(results) );
+      $("#profilePic").attr("value", result[0].url)
     });
   }, false);
   $(document).on('cloudinarywidgetsuccess', function(e, data) {
-
   console.log("Global success", e, data);
 });
   </script>
