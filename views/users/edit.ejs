@@ -41,7 +41,7 @@
   </div>
   <script type="text/javascript">
   document.getElementById("upload_widget_opener").addEventListener("click", function() {
-    cloudinary.openUploadWidget({ cloud_name: 'dcc5vb7ot', upload_preset: 'ft2wpaew', multiple: false, theme: 'minimal', cropping: 'server', stylesheet: 'http://recipeers.herokuapp.com/style.css'},
+    cloudinary.openUploadWidget({ cloud_name: 'dcc5vb7ot', upload_preset: 'ft2wpaew', multiple: false, theme: 'minimal', cropping: 'server'},
     function(error, result) {
       $("#profilePic").attr("value", result[0].url)
     });
