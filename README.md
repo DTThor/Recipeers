@@ -53,11 +53,16 @@ Additional:
 
  <br>
 
- img
 
-* Enter in your credentials.
-* Upload awesome profile pic.
-* Log in.
+ ![create profile](http://res.cloudinary.com/dcc5vb7ot/image/upload/v1508518616/createProfile_hakybt.png)
+ <br>
+ <br>
+ ![create profile](http://res.cloudinary.com/dcc5vb7ot/image/upload/v1508518592/createUsername2_l9mkzg.png)
+ <br>
+ <br>
+ ![create profile](http://res.cloudinary.com/dcc5vb7ot/image/upload/v1508518582/filloutForm2_tc1xh9.png)
+ <br><br>
+ ![create profile](http://res.cloudinary.com/dcc5vb7ot/image/upload/v1508518574/profilePic_f4zdui.png)
 
 <br>
 
