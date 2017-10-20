@@ -53,7 +53,6 @@ Additional:
 
  <br>
 
-
  ![create profile](http://res.cloudinary.com/dcc5vb7ot/image/upload/v1508518616/createProfile_hakybt.png)
  <br><br>
  ![create profile](http://res.cloudinary.com/dcc5vb7ot/image/upload/v1508518592/createUsername2_l9mkzg.png)
@@ -67,6 +66,7 @@ Additional:
  ##  2. Add your own recipe
 
 <br>
+
 ![create profile](http://res.cloudinary.com/dcc5vb7ot/image/upload/v1508519496/Snip20171020_2_uwxhgs.png)
 <br><br>
 ![create profile](http://res.cloudinary.com/dcc5vb7ot/image/upload/v1508519499/Snip20171020_4_zcll6c.png)
