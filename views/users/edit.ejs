@@ -39,7 +39,7 @@
   </div>
   <script type="text/javascript">
   document.getElementById("upload_widget_opener").addEventListener("click", function() {
-    cloudinary.openUploadWidget({ cloud_name: 'dcc5vb7ot', upload_preset: 'ft2wpaew', theme: 'minimal', multiple: false, cropping: 'server'},
+    cloudinary.openUploadWidget({ cloud_name: 'dcc5vb7ot', upload_preset: 'ft2wpaew', multiple: false, theme: 'minimal', cropping: 'server', stylesheet: '#cloudinary-overlay { background-color: orange; }'},
     function(error, result) {
       console.log(error, result)
       $.ajax({
