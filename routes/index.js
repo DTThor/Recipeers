@@ -38,12 +38,11 @@ router.get('/', (req, res, next) => {
           })
           .catch(err => {
             next(err);
+          })
         })
       })
     })
-  })
-}
-  else {
+  } else {
     knex('recipes')
     .select('recipes.name AS recipe_name', 'recipe_pic_url', 'recipes.id AS recipeID', 'users.profile_pic_url')
     .join('users', 'user_id', '=', 'users.id')
@@ -54,7 +53,6 @@ router.get('/', (req, res, next) => {
       next(err);
     })
   }
-
 });
 
 // logging out
