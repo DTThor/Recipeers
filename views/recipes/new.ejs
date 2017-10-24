@@ -76,8 +76,6 @@
               },
                 function(error, result) {
                   $('#thumbnail').attr('src', result[0].url).attr('width', '100px');
-                  //click and complete widget upload, then enable submit
-                  //grab submit button and add onclick to it
                   $('#submit-button').prop('disabled', false).click(()=>{
                     $('#pic').attr('value', result[0].url);
                   });
