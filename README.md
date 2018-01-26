@@ -1,10 +1,10 @@
 # Hello Recipeers!
 
+**-Recipeers is a social media app for discovering and sharing recipes.** by [Amanda Freeman](https://github.com/mandafae),  [Dylan Thorwaldson](https://github.com/DTThor), and [Michael Quiroz](https://github.com/cocomjolk), [Rachel Cavin](https://github.com/Rmcavin) built in a week for Galvanize g63 cohort qtr 2 project.
+
 ![from zapier](https://cdn.zapier.com/storage/blog/1493b5cec9773fe7017b5980f40b8fa8.1800x1000.jpg)
 
 <br>
-
-**-Recipeers is a social media app for discovering and sharing recipes.** by [Amanda Freeman](https://github.com/mandafae),  [Dylan Thorwaldson](https://github.com/DTThor), and [Michael Quiroz](https://github.com/cocomjolk), [Rachel Cavin](https://github.com/Rmcavin) built in a week for Galvanize g63 cohort qtr 2 project.
 
 **-Our goal** is to create a platform for users to interact effortlessly to find, share and try new and interesting recipes with friends and followers. 
 
